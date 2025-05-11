@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillBoost - Образовательная платформа</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- SVG-спрайт -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <!-- Бизнес -->
+        <symbol id="icon-business" viewBox="0 0 24 24">
+            <path d="M20 7H4C2.89543 7 2 7.89543 2 9V19C2 20.1046 2.89543 21 4 21H20C21.1046 21 22 20.1046 22 19V9C22 7.89543 21.1046 7 20 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16 21V5C16 4.46957 15.7893 3.96086 15.4142 3.58579C15.0391 3.21071 14.5304 3 14 3H10C9.46957 3 8.96086 3.21071 8.58579 3.58579C8.21071 3.96086 8 4.46957 8 5V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <!-- Маркетинг -->
+        <symbol id="icon-marketing" viewBox="0 0 24 24">
+            <path d="M12 20V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18 20V4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6 20V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <!-- Графика и Дизайн -->
+        <symbol id="icon-design" viewBox="0 0 24 24">
+            <path d="M12 19L19 12L22 15L15 22L12 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18 13L16.5 5.5L2 2L5.5 16.5L13 18L18 13Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 2L9.586 9.586" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <!-- Программирование -->
+        <symbol id="icon-programming" viewBox="0 0 24 24">
+            <path d="M16 18L22 12L16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 6L2 12L8 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <!-- Фото и Видео -->
+        <symbol id="icon-media" viewBox="0 0 24 24">
+            <path d="M23 7L16 12L23 17V7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14 5H3C1.89543 5 1 5.89543 1 7V17C1 18.1046 1.89543 19 3 19H14C15.1046 19 16 18.1046 16 17V7C16 5.89543 15.1046 5 14 5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <!-- Финансы -->
+        <symbol id="icon-finance" viewBox="0 0 24 24">
+            <path d="M12 1V23" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M17 5H9.5C8.57174 5 7.6815 5.36875 7.02513 6.02513C6.36875 6.6815 6 7.57174 6 8.5C6 9.42826 6.36875 10.3185 7.02513 10.9749C7.6815 11.6313 8.57174 12 9.5 12H14.5C15.4283 12 16.3185 12.3687 16.9749 13.0251C17.6313 13.6815 18 14.5717 18 15.5C18 16.4283 17.6313 17.3185 16.9749 17.9749C16.3185 18.6313 15.4283 19 14.5 19H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <!-- Иностранный язык -->
+        <symbol id="icon-language" viewBox="0 0 24 24">
+            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 12H22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <!-- Инвестиции -->
+        <symbol id="icon-investment" viewBox="0 0 24 24">
+            <path d="M3 22L21 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M21 22V16H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3 10V4H9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <!-- Дети и Родители -->
+        <symbol id="icon-family" viewBox="0 0 24 24">
+            <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <!-- Здоровье и спорт -->
+        <symbol id="icon-health" viewBox="0 0 24 24">
+            <path d="M20.84 4.61C20.3292 4.099 19.7228 3.69364 19.0554 3.41708C18.3879 3.14052 17.6725 2.99817 16.95 2.99817C16.2275 2.99817 15.5121 3.14052 14.8446 3.41708C14.1772 3.69364 13.5708 4.099 13.06 4.61L12 5.67L10.94 4.61C9.9083 3.57831 8.50903 2.99871 7.05 2.99871C5.59096 2.99871 4.19169 3.57831 3.16 4.61C2.12831 5.64169 1.54871 7.04097 1.54871 8.5C1.54871 9.95903 2.12831 11.3583 3.16 12.39L12 21.23L20.84 12.39C21.351 11.8792 21.7563 11.2728 22.0329 10.6054C22.3095 9.93789 22.4518 9.22249 22.4518 8.5C22.4518 7.77751 22.3095 7.0621 22.0329 6.39464C21.7563 5.72718 21.351 5.12075 20.84 4.61Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <!-- Пикап и Отношения -->
+        <symbol id="icon-relationships" viewBox="0 0 24 24">
+            <path d="M20.84 4.61C20.3292 4.099 19.7228 3.69364 19.0554 3.41708C18.3879 3.14052 17.6725 2.99817 16.95 2.99817C16.2275 2.99817 15.5121 3.14052 14.8446 3.41708C14.1772 3.69364 13.5708 4.099 13.06 4.61L12 5.67L10.94 4.61C9.9083 3.57831 8.50903 2.99871 7.05 2.99871C5.59096 2.99871 4.19169 3.57831 3.16 4.61C2.12831 5.64169 1.54871 7.04097 1.54871 8.5C1.54871 9.95903 2.12831 11.3583 3.16 12.39L4.22 13.45L12 21.23L19.78 13.45L20.84 12.39C21.351 11.8792 21.7563 11.2728 22.0329 10.6054C22.3095 9.93789 22.4518 9.22249 22.4518 8.5C22.4518 7.77751 22.3095 7.0621 22.0329 6.39464C21.7563 5.72718 21.351 5.12075 20.84 4.61Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <!-- Курсы по Музыке -->
+        <symbol id="icon-music" viewBox="0 0 24 24">
+            <path d="M9 18V5L21 3V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6 21C7.65685 21 9 19.6569 9 18C9 16.3431 7.65685 15 6 15C4.34315 15 3 16.3431 3 18C3 19.6569 4.34315 21 6 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18 19C19.6569 19 21 17.6569 21 16C21 14.3431 19.6569 13 18 13C16.3431 13 15 14.3431 15 16C15 17.6569 16.3431 19 18 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+
+        <!-- Курсы по Психологии -->
+        <symbol id="icon-psychology" viewBox="0 0 24 24">
+            <path d="M12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 8V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16 9L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 9L5 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+    </svg>
+    
+    <div class="container">
+        <!-- Хедер -->
+        <header>
+            <div class="header-content">
+                <div class="logo">
+                    <h1>Skill<span>Boost</span></h1>
+                </div>
+                <div class="search-bar">
+                    <svg class="search-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21 21L16.65 16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <input type="text" placeholder="Поиск курса...">
+                </div>
+                <div class="icons">
+                    <img src="cart.svg" alt="Корзина" class="icon">
+                    <img src="profile.svg" alt="Профиль" class="icon">
+                </div>
+            </div>
+        </header>
+
+        <!-- Основной контент -->
+        <main>
+            <section class="hero">
+                <h2>Развивайте навыки<br>будущего уже сегодня</h2>
+                <p>Более 100 курсов по актуальным направлениям</p>
+            </section>
+
+            <section class="popular-categories">
+                <div class="section-header">
+                    <h2>Популярные курсы</h2>
+                    <button class="view-all">Смотреть все</button>
+                </div>
+                <div class="categories-grid">
+                    <div class="category-card">
+                        <div class="course-image">
+                            <img src="images/istockphoto-1487445129-612x612.jpg" alt="Python Pro - Программирование">
+                            <div class="card-icon">
+                                <svg width="24" height="24">
+                                    <use href="#icon-programming"></use>
+                                </svg>
+                            </div>
+                            <div class="card-tag">Топ продаж</div>
+                        </div>
+                        <h3>Python Pro</h3>
+                        <p>Разработка на Python</p>
+                        <div class="price-block">
+                            <span class="price">45 000 ₽</span>
+                            <span class="old-price">89 000 ₽</span>
+                        </div>
+                        <div class="card-footer">
+                            <span class="students">3.2k учеников</span>
+                            <span class="rating">4.9 ★</span>
+                        </div>
+                    </div>
+
+                    <div class="category-card">
+                        <div class="course-image">
+                            <img src="images/design-course.jpg" alt="UI/UX Design">
+                            <div class="card-icon">
+                                <svg width="24" height="24">
+                                    <use href="#icon-design"></use>
+                                </svg>
+                            </div>
+                            <div class="card-tag">Новый курс</div>
+                        </div>
+                        <h3>UI/UX Design</h3>
+                        <p>Дизайн интерфейсов</p>
+                        <div class="price-block">
+                            <span class="price">35 000 ₽</span>
+                            <span class="old-price">70 000 ₽</span>
+                        </div>
+                        <div class="card-footer">
+                            <span class="students">1.5k учеников</span>
+                            <span class="rating">4.8 ★</span>
+                        </div>
+                    </div>
+
+                    <div class="category-card">
+                        <div class="course-image">
+                            <img src="images/marketing-course.jpg" alt="Digital Marketing">
+                            <div class="card-icon">
+                                <svg width="24" height="24">
+                                    <use href="#icon-marketing"></use>
+                                </svg>
+                            </div>
+                            <div class="card-tag">Популярный</div>
+                        </div>
+                        <h3>Digital Marketing</h3>
+                        <p>Интернет-маркетинг</p>
+                        <div class="price-block">
+                            <span class="price">40 000 ₽</span>
+                            <span class="old-price">75 000 ₽</span>
+                        </div>
+                        <div class="card-footer">
+                            <span class="students">2.8k учеников</span>
+                            <span class="rating">4.7 ★</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="course-categories">
+                <div class="section-header">
+                    <h2>Все направления</h2>
+                    <div class="filters">
+                        <button class="filter active">Все</button>
+                        <button class="filter">Популярные</button>
+                        <button class="filter">Новые</button>
+                    </div>
+                </div>
+                <div class="category-list">
+                    <div class="category-item">
+                        <div class="category-info">
+                            <span class="category-name">Бизнес</span>
+                            <span class="course-count">12 курсов</span>
+                        </div>
+                        <div class="category-meta">
+                            <span class="difficulty">Начальный</span>
+                            <span class="dimension">
+                                <img src="icons/business.svg" alt="Бизнес" width="24" height="24">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <div class="category-info">
+                            <span class="category-name">Маркетинг</span>
+                            <span class="course-count">12 курсов</span>
+                        </div>
+                        <div class="category-meta">
+                            <span class="difficulty">Продвинутый</span>
+                            <span class="dimension">
+                                <img src="icons/marketing.svg" alt="Маркетинг" width="24" height="24">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <div class="category-info">
+                            <span class="category-name">Графика и Дизайн</span>
+                            <span class="course-count">10 курсов</span>
+                        </div>
+                        <div class="category-meta">
+                            <span class="difficulty">Начальный</span>
+                            <span class="dimension">
+                                <img src="icons/design.svg" alt="Дизайн" width="24" height="24">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <div class="category-info">
+                            <span class="category-name">Программирование</span>
+                            <span class="course-count">45 курсов</span>
+                        </div>
+                        <div class="category-meta">
+                            <span class="difficulty">Продвинутый</span>
+                            <span class="dimension">
+                                <img src="icons/programming.svg" alt="Программирование" width="24" height="24">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <div class="category-info">
+                            <span class="category-name">Фото и Видео</span>
+                            <span class="course-count">35 курсов</span>
+                        </div>
+                        <div class="category-meta">
+                            <span class="difficulty">Средний</span>
+                            <span class="dimension">
+                                <img src="icons/media.svg" alt="Фото и Видео" width="24" height="24">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <div class="category-info">
+                            <span class="category-name">Финансы</span>
+                            <span class="course-count">12 курсов</span>
+                        </div>
+                        <div class="category-meta">
+                            <span class="difficulty">Продвинутый</span>
+                            <span class="dimension">
+                                <img src="icons/finance.svg" alt="Финансы" width="24" height="24">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <div class="category-info">
+                            <span class="category-name">Иностранный язык</span>
+                            <span class="course-count">10 курсов</span>
+                        </div>
+                        <div class="category-meta">
+                            <span class="difficulty">Начальный</span>
+                            <span class="dimension">
+                                <img src="icons/language.svg" alt="Иностранный язык" width="24" height="24">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <div class="category-info">
+                            <span class="category-name">Инвестиции</span>
+                            <span class="course-count">45 курсов</span>
+                        </div>
+                        <div class="category-meta">
+                            <span class="difficulty">Продвинутый</span>
+                            <span class="dimension">
+                                <img src="icons/investment.svg" alt="Инвестиции" width="24" height="24">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <div class="category-info">
+                            <span class="category-name">Дети и Родители</span>
+                            <span class="course-count">12 курсов</span>
+                        </div>
+                        <div class="category-meta">
+                            <span class="difficulty">Начальный</span>
+                            <span class="dimension">
+                                <img src="icons/family.svg" alt="Дети и Родители" width="24" height="24">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <div class="category-info">
+                            <span class="category-name">Здоровье и спорт</span>
+                            <span class="course-count">45 курсов</span>
+                        </div>
+                        <div class="category-meta">
+                            <span class="difficulty">Средний</span>
+                            <span class="dimension">
+                                <svg width="24" height="24">
+                                    <use href="#icon-health"></use>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <div class="category-info">
+                            <span class="category-name">Пикап и Отношения</span>
+                            <span class="course-count">45 курсов</span>
+                        </div>
+                        <div class="category-meta">
+                            <span class="difficulty">Продвинутый</span>
+                            <span class="dimension">
+                                <img src="icons/relationships.svg" alt="Пикап и Отношения" width="24" height="24">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <div class="category-info">
+                            <span class="category-name">Курсы по Музыке</span>
+                            <span class="course-count">10 курсов</span>
+                        </div>
+                        <div class="category-meta">
+                            <span class="difficulty">Начальный</span>
+                            <span class="dimension">
+                                <img src="icons/music.svg" alt="Курсы по Музыке" width="24" height="24">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <div class="category-info">
+                            <span class="category-name">Курсы по Психологии</span>
+                            <span class="course-count">45 курсов</span>
+                        </div>
+                        <div class="category-meta">
+                            <span class="difficulty">Продвинутый</span>
+                            <span class="dimension">
+                                <svg width="24" height="24">
+                                    <use href="#icon-psychology"></use>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>SkillBoost</h2>
+                    <p>Образовательная платформа<br>для развития digital-навыков</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h3>Поддержка</h3>
+                        <a href="#">FAQ</a>
+                        <a href="#">Контакты</a>
+                        <a href="#">Обратная связь</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 SkillBoost. Все права защищены</p>
+            </div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
