@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Программирование - SkillBoost</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="courses.css">
+    <link rel="stylesheet" href="cart.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Хедер -->
+        <header>
+            <div class="header-content">
+                <div class="header-left">
+                    <a href="index.html" class="back-button">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M19 12H5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <div class="logo">
+                        <h1>Skill<span>Boost</span></h1>
+                    </div>
+                </div>
+                <div class="search-bar courses-search">
+                    <svg class="search-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21 21L16.65 16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <input type="text" placeholder="Поиск курса...">
+                </div>
+                <div class="icons">
+                    <a href="cart.html" class="cart-icon">
+                        <img src="cart.svg" alt="Корзина" class="icon">
+                        <span class="cart-counter">0</span>
+                    </a>
+                    <img src="profile.svg" alt="Профиль" class="icon">
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Заголовок категории -->
+            <section class="category-header">
+                <div class="category-title">
+                    <h1>Программирование</h1>
+                    <p>Найдено 34 курса по программированию</p>
+                </div>
+                <div class="category-filters">
+                    <div class="filter-group">
+                        <button class="filter active" data-category="all">Все курсы</button>
+                        <button class="filter" data-category="python">Python</button>
+                        <button class="filter" data-category="javascript">JavaScript</button>
+                        <button class="filter" data-category="java">Java</button>
+                        <button class="filter" data-category="cpp">C++</button>
+                    </div>
+                    <div class="sort-dropdown">
+                        <select>
+                            <option value="popular">По популярности</option>
+                            <option value="price-low">Сначала дешевле</option>
+                            <option value="price-high">Сначала дороже</option>
+                            <option value="rating">По рейтингу</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SVG-спрайт для иконок -->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                <symbol id="icon-bookmark-filled" viewBox="0 0 24 24">
+                    <path d="M19 21L12 16L5 21V5C5 4.46957 5.21071 3.96086 5.58579 3.58579C5.96086 3.21071 6.46957 3 7 3H17C17.5304 3 18.0391 3.21071 18.4142 3.58579C18.7893 3.96086 19 4.46957 19 5V21Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </symbol>
+            </svg>
+
+            <!-- Сетка курсов -->
+            <section class="courses-grid">
+                <!-- Blender курс -->
+                <a href="course-details.html?id=blender-2023" class="course-link">
+                    <div class="course-card" data-course-id="blender-2023">
+                        <div class="course-image">
+                            <img src="images/placeholder.png" alt="Blender 2023">
+                            <div class="course-badge">Новинка</div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-info">
+                                <h3>Blender 2023 - Полный базовый курс 3D моделирования</h3>
+                                <p class="course-description">Освойте основы 3D моделирования в Blender. От базовых инструментов до создания собственных 3D моделей.</p>
+                            </div>
+                            <div class="course-footer">
+                                <div class="price-block">
+                                    <span class="current-price">4900</span>
+                                    <span class="old-price">6900</span>
+                                </div>
+                                <div class="course-actions">
+                                    <button class="bookmark-button" onclick="event.preventDefault(); toggleBookmark('blender-2023')">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path d="M19 21L12 16L5 21V5C5 4.46957 5.21071 3.96086 5.58579 3.58579C5.96086 3.21071 6.46957 3 7 3H17C17.5304 3 18.0391 3.21071 18.4142 3.58579C18.7893 3.96086 19 4.46957 19 5V21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                    <button class="buy-button" onclick="event.preventDefault(); addToCart({
+                                        id: 'blender-2023',
+                                        title: 'Blender 2023 - Полный базовый курс 3D моделирования',
+                                        price: 4900,
+                                        image: 'images/placeholder.png'
+                                    })">Добавить в корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- JavaScript курс -->
+                <a href="course-details.html?id=javascript-pro" class="course-link">
+                    <div class="course-card" data-course-id="javascript-pro">
+                        <div class="course-image">
+                            <img src="images/placeholder.png" alt="JavaScript">
+                            <div class="course-badge">Популярный</div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-info">
+                                <h3>JavaScript: Полное руководство</h3>
+                                <p class="course-description">Изучите JavaScript с нуля до профессионального уровня. React, Node.js и современная веб-разработка.</p>
+                            </div>
+                            <div class="course-footer">
+                                <div class="price-block">
+                                    <span class="current-price">4900</span>
+                                    <span class="old-price">8900</span>
+                                </div>
+                                <div class="course-actions">
+                                    <button class="bookmark-button" onclick="event.preventDefault(); toggleBookmark('javascript-pro')">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path d="M19 21L12 16L5 21V5C5 4.46957 5.21071 3.96086 5.58579 3.58579C5.96086 3.21071 6.46957 3 7 3H17C17.5304 3 18.0391 3.21071 18.4142 3.58579C18.7893 3.96086 19 4.46957 19 5V21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                    <button class="buy-button" onclick="event.preventDefault(); addToCart({
+                                        id: 'javascript-pro',
+                                        title: 'JavaScript: Полное руководство',
+                                        price: 4900,
+                                        image: 'images/placeholder.png'
+                                    })">Добавить в корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Python Pro курс -->
+                <a href="course-details.html?id=python-pro" class="course-link">
+                    <div class="course-card" data-course-id="python-pro">
+                        <div class="course-image">
+                            <img src="images/placeholder.png" alt="Python Pro">
+                            <div class="course-badge new">Новинка</div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-info">
+                                <h3>Python Pro: Продвинутое программирование</h3>
+                                <p class="course-description">Освойте продвинутые концепции Python: многопоточность, асинхронность, микросервисы и многое другое.</p>
+                            </div>
+                            <div class="course-footer">
+                                <div class="price-block">
+                                    <span class="current-price">2750</span>
+                                    <span class="old-price">5000</span>
+                                </div>
+                                <div class="course-actions">
+                                    <button class="bookmark-button" onclick="event.preventDefault(); toggleBookmark('python-pro')">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path d="M19 21L12 16L5 21V5C5 4.46957 5.21071 3.96086 5.58579 3.58579C5.96086 3.21071 6.46957 3 7 3H17C17.5304 3 18.0391 3.21071 18.4142 3.58579C18.7893 3.96086 19 4.46957 19 5V21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                    <button class="buy-button" onclick="event.preventDefault(); addToCart({
+                                        id: 'python-pro',
+                                        title: 'Python Pro: Продвинутое программирование',
+                                        price: 2750,
+                                        image: 'images/placeholder.png'
+                                    })">Добавить в корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Java курс -->
+                <a href="course-details.html?id=java-spring" class="course-link">
+                    <div class="course-card" data-course-id="java-spring">
+                        <div class="course-image">
+                            <img src="images/placeholder.png" alt="Java Spring">
+                            <div class="course-badge">Бестселлер</div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-info">
+                                <h3>Java Spring Boot: Разработка современных приложений</h3>
+                                <p class="course-description">Создавайте масштабируемые веб-приложения на Java Spring Boot. Микросервисы, REST API и работа с базами данных.</p>
+                            </div>
+                            <div class="course-footer">
+                                <div class="price-block">
+                                    <span class="current-price">6900</span>
+                                    <span class="old-price">8900</span>
+                                </div>
+                                <div class="course-actions">
+                                    <button class="bookmark-button" onclick="event.preventDefault(); toggleBookmark('java-spring')">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path d="M19 21L12 16L5 21V5C5 4.46957 5.21071 3.96086 5.58579 3.58579C5.96086 3.21071 6.46957 3 7 3H17C17.5304 3 18.0391 3.21071 18.4142 3.58579C18.7893 3.96086 19 4.46957 19 5V21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                    <button class="buy-button" onclick="event.preventDefault(); addToCart({
+                                        id: 'java-spring',
+                                        title: 'Java Spring Boot: Разработка современных приложений',
+                                        price: 6900,
+                                        image: 'images/placeholder.png'
+                                    })">Добавить в корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- C++ курс -->
+                <a href="course-details.html?id=cpp-game-dev" class="course-link">
+                    <div class="course-card" data-course-id="cpp-game-dev">
+                        <div class="course-image">
+                            <img src="images/placeholder.png" alt="C++ разработка игр">
+                            <div class="course-badge">Новый курс</div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-info">
+                                <h3>C++ и Unreal Engine: Разработка игр</h3>
+                                <p class="course-description">Изучите C++ и создайте свою первую игру в Unreal Engine. От основ до продвинутых техник геймдева.</p>
+                            </div>
+                            <div class="course-footer">
+                                <div class="price-block">
+                                    <span class="current-price">7900</span>
+                                    <span class="old-price">9900</span>
+                                </div>
+                                <div class="course-actions">
+                                    <button class="bookmark-button" onclick="event.preventDefault(); toggleBookmark('cpp-game-dev')">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path d="M19 21L12 16L5 21V5C5 4.46957 5.21071 3.96086 5.58579 3.58579C5.96086 3.21071 6.46957 3 7 3H17C17.5304 3 18.0391 3.21071 18.4142 3.58579C18.7893 3.96086 19 4.46957 19 5V21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                    <button class="buy-button" onclick="event.preventDefault(); addToCart({
+                                        id: 'cpp-game-dev',
+                                        title: 'C++ и Unreal Engine: Разработка игр',
+                                        price: 7900,
+                                        image: 'images/placeholder.png'
+                                    })">Добавить в корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- React курс -->
+                <a href="course-details.html?id=react-typescript" class="course-link">
+                    <div class="course-card" data-course-id="react-typescript">
+                        <div class="course-image">
+                            <img src="images/placeholder.png" alt="React + TypeScript">
+                            <div class="course-badge">Популярный</div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-info">
+                                <h3>React + TypeScript: Профессиональная разработка</h3>
+                                <p class="course-description">Создавайте современные веб-приложения с использованием React и TypeScript. Redux, Next.js и лучшие практики.</p>
+                            </div>
+                            <div class="course-footer">
+                                <div class="price-block">
+                                    <span class="current-price">6500</span>
+                                    <span class="old-price">8500</span>
+                                </div>
+                                <div class="course-actions">
+                                    <button class="bookmark-button" onclick="event.preventDefault(); toggleBookmark('react-typescript')">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path d="M19 21L12 16L5 21V5C5 4.46957 5.21071 3.96086 5.58579 3.58579C5.96086 3.21071 6.46957 3 7 3H17C17.5304 3 18.0391 3.21071 18.4142 3.58579C18.7893 3.96086 19 4.46957 19 5V21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                    <button class="buy-button" onclick="event.preventDefault(); addToCart({
+                                        id: 'react-typescript',
+                                        title: 'React + TypeScript: Профессиональная разработка',
+                                        price: 6500,
+                                        image: 'images/placeholder.png'
+                                    })">Добавить в корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Python Data Science курс -->
+                <a href="course-details.html?id=python-data-science" class="course-link">
+                    <div class="course-card" data-course-id="python-data-science">
+                        <div class="course-image">
+                            <img src="images/placeholder.png" alt="Python Data Science">
+                            <div class="course-badge">Трендовый</div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-info">
+                                <h3>Python для Data Science и машинного обучения</h3>
+                                <p class="course-description">Освойте анализ данных, машинное обучение и нейронные сети с Python. Pandas, NumPy, Scikit-learn и TensorFlow.</p>
+                            </div>
+                            <div class="course-footer">
+                                <div class="price-block">
+                                    <span class="current-price">8900</span>
+                                    <span class="old-price">11900</span>
+                                </div>
+                                <div class="course-actions">
+                                    <button class="bookmark-button" onclick="event.preventDefault(); toggleBookmark('python-data-science')">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path d="M19 21L12 16L5 21V5C5 4.46957 5.21071 3.96086 5.58579 3.58579C5.96086 3.21071 6.46957 3 7 3H17C17.5304 3 18.0391 3.21071 18.4142 3.58579C18.7893 3.96086 19 4.46957 19 5V21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                    <button class="buy-button" onclick="event.preventDefault(); addToCart({
+                                        id: 'python-data-science',
+                                        title: 'Python для Data Science и машинного обучения',
+                                        price: 8900,
+                                        image: 'images/placeholder.png'
+                                    })">Добавить в корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </section>
+
+            <!-- Пагинация -->
+            <nav class="pagination" aria-label="Навигация по страницам">
+                <button class="page-button active" aria-current="page">1</button>
+                <button class="page-button">2</button>
+                <button class="page-button">3</button>
+                <span class="page-dots">...</span>
+                <button class="page-button">8</button>
+            </nav>
+        </main>
+
+        <!-- Футер -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>SkillBoost</h2>
+                    <p>Образовательная платформа<br>для развития digital-навыков</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h3>Поддержка</h3>
+                        <a href="#">FAQ</a>
+                        <a href="#">Контакты</a>
+                        <a href="#">Обратная связь</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 SkillBoost. Все права защищены</p>
+            </div>
+        </footer>
+    </div>
+    <script src="cart.js"></script>
+    <script>
+        function addToCart(course) {
+            Cart.addItem(course);
+            
+            // Находим кнопку, которая была нажата
+            const button = event.currentTarget;
+            button.innerHTML = `
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M16.6663 5L7.49967 14.1667L3.33301 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                В корзине
+            `;
+            button.classList.add('in-cart');
+            button.disabled = true;
+        }
+
+        function toggleBookmark(courseId) {
+            const button = event.currentTarget;
+            button.classList.toggle('active');
+            
+            // Обновляем иконку
+            if (button.classList.contains('active')) {
+                button.innerHTML = `
+                    <svg width="24" height="24">
+                        <use href="#icon-bookmark-filled"/>
+                    </svg>
+                `;
+            } else {
+                button.innerHTML = `
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M19 21L12 16L5 21V5C5 4.46957 5.21071 3.96086 5.58579 3.58579C5.96086 3.21071 6.46957 3 7 3H17C17.5304 3 18.0391 3.21071 18.4142 3.58579C18.7893 3.96086 19 4.46957 19 5V21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                `;
+            }
+            
+            // Получаем текущий список избранного из localStorage
+            let bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+            
+            if (button.classList.contains('active')) {
+                // Добавляем курс в избранное
+                if (!bookmarks.includes(courseId)) {
+                    bookmarks.push(courseId);
+                }
+            } else {
+                // Удаляем курс из избранного
+                bookmarks = bookmarks.filter(id => id !== courseId);
+            }
+            
+            // Сохраняем обновленный список
+            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+        }
+
+        // Восстанавливаем состояние кнопок при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            // Восстанавливаем состояние закладок
+            const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+            bookmarks.forEach(courseId => {
+                const button = document.querySelector(`[onclick*="toggleBookmark('${courseId}')"]`);
+                if (button) {
+                    button.classList.add('active');
+                    button.innerHTML = `
+                        <svg width="24" height="24">
+                            <use href="#icon-bookmark-filled"/>
+                        </svg>
+                    `;
+                }
+            });
+
+            // Восстанавливаем состояние кнопок корзины
+            const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            cart.forEach(item => {
+                const button = document.querySelector(`[onclick*="addToCart({id: '${item.id}"]`);
+                if (button) {
+                    button.innerHTML = `
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.6663 5L7.49967 14.1667L3.33301 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        В корзине
+                    `;
+                    button.classList.add('in-cart');
+                    button.disabled = true;
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

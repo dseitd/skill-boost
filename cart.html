@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина - SkillBoost</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cart.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Хедер -->
+        <header>
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <h1>Skill<span>Boost</span></h1>
+                    </a>
+                </div>
+                <div class="search-bar">
+                    <svg class="search-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21 21L16.65 16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <input type="text" placeholder="Поиск курса...">
+                </div>
+                <div class="icons">
+                    <a href="cart.html" class="cart-icon">
+                        <img src="cart.svg" alt="Корзина" class="icon">
+                        <span class="cart-counter">0</span>
+                    </a>
+                    <img src="profile.svg" alt="Профиль" class="icon">
+                </div>
+            </div>
+        </header>
+
+        <main class="cart-page">
+            <div class="cart-header">
+                <h1>Корзина</h1>
+                <div class="cart-actions">
+                    <button class="clear-cart" onclick="Cart.clearCart()">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M2.5 5H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M15.8337 5V16.6667C15.8337 17.5 15.0003 18.3333 14.167 18.3333H5.83366C5.00033 18.3333 4.16699 17.5 4.16699 16.6667V5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M6.66699 5V3.33333C6.66699 2.5 7.50033 1.66667 8.33366 1.66667H11.667C12.5003 1.66667 13.3337 2.5 13.3337 3.33333V5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Очистить корзину
+                    </button>
+                </div>
+            </div>
+
+            <div class="cart-content">
+                <div class="cart-items">
+                    <!-- Товары будут добавляться динамически -->
+                </div>
+
+                <div class="cart-summary">
+                    <h2>Итого</h2>
+                    <div class="cart-total">
+                        <span>Общая стоимость:</span>
+                        <span class="cart-total-price">0 ₽</span>
+                    </div>
+                    <button class="checkout-button">Оформить заказ</button>
+                    <div class="cart-info">
+                        <p>✓ Моментальный доступ к курсам</p>
+                        <p>✓ Гарантия возврата 30 дней</p>
+                        <p>✓ Сертификат по окончании</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cart-empty-message" style="display: none;"></div>
+        </main>
+
+        <!-- Футер -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>SkillBoost</h2>
+                    <p>Образовательная платформа<br>для развития digital-навыков</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h3>Поддержка</h3>
+                        <a href="#">FAQ</a>
+                        <a href="#">Контакты</a>
+                        <a href="#">Обратная связь</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 SkillBoost. Все права защищены</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="cart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cartItems = document.querySelector('.cart-items');
+            const emptyMessage = document.querySelector('.cart-empty-message');
+            const cartContent = document.querySelector('.cart-content');
+
+            function renderCart() {
+                const items = Cart.items;
+                
+                if (items.length === 0) {
+                    emptyMessage.style.display = 'block';
+                    cartContent.style.display = 'none';
+                    return;
+                }
+
+                emptyMessage.style.display = 'none';
+                cartContent.style.display = 'flex';
+                cartItems.innerHTML = '';
+
+                items.forEach(item => {
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'cart-item';
+                    cartItem.innerHTML = `
+                        <div class="cart-item-image">
+                            <img src="${item.image}" alt="${item.title}">
+                        </div>
+                        <div class="cart-item-info">
+                            <h3>${item.title}</h3>
+                            <p class="cart-item-price">${item.price.toLocaleString()} ₽</p>
+                        </div>
+                        <button class="remove-item" onclick="Cart.removeItem('${item.id}')">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                    `;
+                    cartItems.appendChild(cartItem);
+                });
+
+                Cart.updateCartTotal();
+            }
+
+            // Первичный рендер корзины
+            renderCart();
+
+            // Обработчик кнопки оформления заказа
+            document.querySelector('.checkout-button').addEventListener('click', () => {
+                alert('Функционал оформления заказа находится в разработке');
+            });
+        });
+    </script>
+</body>
+</html> 

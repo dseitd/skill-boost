@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль - SkillBoost</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="profile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Хедер -->
+        <header>
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <h1>Skill<span>Boost</span></h1>
+                    </a>
+                </div>
+                <div class="search-bar">
+                    <svg class="search-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21 21L16.65 16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <input type="text" placeholder="Поиск курса...">
+                </div>
+                <div class="icons">
+                    <a href="cart.html" class="cart-icon">
+                        <img src="cart.svg" alt="Корзина" class="icon">
+                        <span class="cart-counter">0</span>
+                    </a>
+                    <a href="profile.html" class="profile-icon active">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21"/>
+                            <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <main class="profile-main">
+            <div class="profile-header">
+                <div class="profile-cover" style="background-image: url('./qcnCg1r8zF6Jb6FUzkPfN9t5Bilx12UGvItrfLQCc5lKT9MKMmn9F7m1o8JYczclprwDCrenoosrkfVvJEO6qx7u.jpg'); height: 300px;">
+                    <button class="edit-cover">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="profile-info">
+                    <div class="profile-avatar">
+                        <img src="./ddseitt.gif" alt="Аватар пользователя" class="avatar-image">
+                        <button class="edit-avatar">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="profile-details">
+                        <h1>Дэнчик Данилов</h1>
+                        <div class="profile-level">
+                            <div class="level-info">
+                                <span class="level-badge">Уровень 3</span>
+                                <span class="level-title">Продвинутый ученик</span>
+                            </div>
+                            <div class="level-progress">
+                                <div class="progress-bar" style="width: 75%"></div>
+                                <span class="progress-text">750/1000 XP</span>
+                            </div>
+                        </div>
+                        <div class="profile-stats">
+                            <div class="stat">
+                                <span class="stat-value">12</span>
+                                <span class="stat-label">Курсов</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">156</span>
+                                <span class="stat-label">Часов</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">8</span>
+                                <span class="stat-label">Сертификатов</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-content">
+                <div class="profile-nav">
+                    <button class="nav-item active" data-tab="courses">Мои курсы</button>
+                    <button class="nav-item" data-tab="favorites">Избранное</button>
+                    <button class="nav-item" data-tab="progress">Прогресс</button>
+                    <button class="nav-item" data-tab="certificates">Сертификаты</button>
+                    <button class="nav-item" data-tab="achievements">Достижения</button>
+                    <button class="nav-item" data-tab="settings">Настройки</button>
+                </div>
+
+                <div class="profile-sections">
+                    <!-- Секция "Мои курсы" -->
+                    <section class="profile-section active" id="courses">
+                        <div class="section-header">
+                            <h2>Мои курсы</h2>
+                            <div class="course-filters">
+                                <button class="filter-btn active">Активные</button>
+                                <button class="filter-btn">Завершенные</button>
+                            </div>
+                        </div>
+                        <div class="courses-grid">
+                            <!-- Карточка курса -->
+                            <div class="course-card">
+                                <div class="course-progress">
+                                    <div class="progress-bar" style="width: 75%"></div>
+                                    <span class="progress-text">75% пройдено</span>
+                                </div>
+                                <div class="course-image">
+                                    <img src="./qcnCg1r8zF6Jb6FUzkPfN9t5Bilx12UGvItrfLQCc5lKT9MKMmn9F7m1o8JYczclprwDCrenoosrkfVvJEO6qx7u.jpg" alt="Python Pro">
+                                </div>
+                                <div class="course-info">
+                                    <h3>Python Pro</h3>
+                                    <p>Профессиональная разработка на Python</p>
+                                    <div class="course-meta">
+                                        <span class="lessons-completed">15/20 уроков</span>
+                                        <button class="continue-btn">Продолжить</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Добавленные избранные курсы -->
+                            <div class="course-card">
+                                <div class="course-progress">
+                                    <div class="progress-bar" style="width: 0%"></div>
+                                    <span class="progress-text">Не начат</span>
+                                </div>
+                                <div class="course-image">
+                                    <img src="./qcnCg1r8zF6Jb6FUzkPfN9t5Bilx12UGvItrfLQCc5lKT9MKMmn9F7m1o8JYczclprwDCrenoosrkfVvJEO6qx7u.jpg" alt="JavaScript Pro">
+                                </div>
+                                <div class="course-info">
+                                    <h3>JavaScript Pro</h3>
+                                    <p>Профессиональная разработка на JavaScript</p>
+                                    <div class="course-meta">
+                                        <span class="lessons-count">20 уроков</span>
+                                        <button class="start-btn">Начать</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="course-card">
+                                <div class="course-progress">
+                                    <div class="progress-bar" style="width: 0%"></div>
+                                    <span class="progress-text">Не начат</span>
+                                </div>
+                                <div class="course-image">
+                                    <img src="./qcnCg1r8zF6Jb6FUzkPfN9t5Bilx12UGvItrfLQCc5lKT9MKMmn9F7m1o8JYczclprwDCrenoosrkfVvJEO6qx7u.jpg" alt="React Мастер">
+                                </div>
+                                <div class="course-info">
+                                    <h3>React Мастер</h3>
+                                    <p>Создание современных веб-приложений</p>
+                                    <div class="course-meta">
+                                        <span class="lessons-count">25 уроков</span>
+                                        <button class="start-btn">Начать</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Новая секция "Избранное" -->
+                    <section class="profile-section" id="favorites">
+                        <div class="section-header">
+                            <h2>Избранные курсы</h2>
+                        </div>
+                        <div class="favorites-grid">
+                            <!-- Здесь будут отображаться избранные курсы -->
+                            <div class="course-card">
+                                <div class="course-progress">
+                                    <div class="progress-bar" style="width: 0%"></div>
+                                    <span class="progress-text">Не начат</span>
+                                </div>
+                                <div class="course-image">
+                                    <img src="./qcnCg1r8zF6Jb6FUzkPfN9t5Bilx12UGvItrfLQCc5lKT9MKMmn9F7m1o8JYczclprwDCrenoosrkfVvJEO6qx7u.jpg" alt="JavaScript Pro">
+                                </div>
+                                <div class="course-info">
+                                    <h3>JavaScript Pro</h3>
+                                    <p>Профессиональная разработка на JavaScript</p>
+                                    <div class="course-meta">
+                                        <span class="lessons-count">20 уроков</span>
+                                        <button class="start-btn">Начать</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="course-card">
+                                <div class="course-progress">
+                                    <div class="progress-bar" style="width: 0%"></div>
+                                    <span class="progress-text">Не начат</span>
+                                </div>
+                                <div class="course-image">
+                                    <img src="./qcnCg1r8zF6Jb6FUzkPfN9t5Bilx12UGvItrfLQCc5lKT9MKMmn9F7m1o8JYczclprwDCrenoosrkfVvJEO6qx7u.jpg" alt="React Мастер">
+                                </div>
+                                <div class="course-info">
+                                    <h3>React Мастер</h3>
+                                    <p>Создание современных веб-приложений</p>
+                                    <div class="course-meta">
+                                        <span class="lessons-count">25 уроков</span>
+                                        <button class="start-btn">Начать</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Новая секция "Прогресс" -->
+                    <section class="profile-section" id="progress">
+                        <h2>Прогресс обучения</h2>
+                        <div class="progress-stats">
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M12 2L2 7L12 12L22 7L12 2Z"></path>
+                                        <path d="M2 17L12 22L22 17"></path>
+                                        <path d="M2 12L12 17L22 12"></path>
+                                    </svg>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-value">156</span>
+                                    <span class="stat-label">Часов обучения</span>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M22 11.08V12C21.9988 14.1564 21.3005 16.2547 20.0093 17.9818C18.7182 19.709 16.9033 20.9725 14.8354 21.5839C12.7674 22.1953 10.5573 22.1219 8.53447 21.3746C6.51168 20.6273 4.78465 19.2461 3.61096 17.4371C2.43727 15.628 1.87979 13.4881 2.02168 11.3363C2.16356 9.18455 2.99721 7.13631 4.39828 5.49706C5.79935 3.85781 7.69279 2.71537 9.79619 2.24013C11.8996 1.7649 14.1003 1.98232 16.07 2.85999"></path>
+                                        <path d="M22 4L12 14.01L9 11.01"></path>
+                                    </svg>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-value">47</span>
+                                    <span class="stat-label">Заданий выполнено</span>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M12 20V10"></path>
+                                        <path d="M18 20V4"></path>
+                                        <path d="M6 20V16"></path>
+                                    </svg>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-value">89%</span>
+                                    <span class="stat-label">Средний балл</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="activity-chart">
+                            <h3>Активность за последние 30 дней</h3>
+                            <div class="chart-container">
+                                <!-- График активности будет добавлен через JavaScript -->
+                            </div>
+                        </div>
+                        <div class="skills-progress">
+                            <h3>Развитие навыков</h3>
+                            <div class="skills-grid">
+                                <div class="skill-card">
+                                    <div class="skill-info">
+                                        <span class="skill-name">Python</span>
+                                        <span class="skill-level">Продвинутый</span>
+                                    </div>
+                                    <div class="skill-progress">
+                                        <div class="progress-bar" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-card">
+                                    <div class="skill-info">
+                                        <span class="skill-name">JavaScript</span>
+                                        <span class="skill-level">Средний</span>
+                                    </div>
+                                    <div class="skill-progress">
+                                        <div class="progress-bar" style="width: 65%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-card">
+                                    <div class="skill-info">
+                                        <span class="skill-name">Web Design</span>
+                                        <span class="skill-level">Начинающий</span>
+                                    </div>
+                                    <div class="skill-progress">
+                                        <div class="progress-bar" style="width: 35%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Секция "Сертификаты" -->
+                    <section class="profile-section" id="certificates">
+                        <h2>Сертификаты</h2>
+                        <div class="certificates-grid">
+                            <div class="certificate-card">
+                                <div class="certificate-preview">
+                                    <img src="https://via.placeholder.com/300x200" alt="Сертификат Python Pro">
+                                </div>
+                                <div class="certificate-info">
+                                    <h3>Python Pro</h3>
+                                    <p>Выдан: 15 марта 2024</p>
+                                    <div class="certificate-actions">
+                                        <button class="download-btn">Скачать</button>
+                                        <button class="share-btn">Поделиться</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Повторите для других сертификатов -->
+                        </div>
+                    </section>
+
+                    <!-- Обновленная секция "Достижения" -->
+                    <section class="profile-section" id="achievements">
+                        <h2>Достижения</h2>
+                        <div class="achievements-stats">
+                            <div class="achievements-summary">
+                                <div class="total-achievements">
+                                    <span class="number">24/50</span>
+                                    <span class="label">Получено достижений</span>
+                                </div>
+                                <div class="achievement-points">
+                                    <span class="number">1250</span>
+                                    <span class="label">Очков опыта</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="achievements-categories">
+                            <button class="category-btn active">Все</button>
+                            <button class="category-btn">Курсы</button>
+                            <button class="category-btn">Активность</button>
+                            <button class="category-btn">Особые</button>
+                        </div>
+                        <div class="achievements-grid">
+                            <div class="achievement-card">
+                                <div class="achievement-icon">
+                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M12 15C15.866 15 19 11.866 19 8C19 4.134 15.866 1 12 1C8.13401 1 5 4.134 5 8C5 11.866 8.13401 15 12 15Z" stroke-width="2"/>
+                                        <path d="M8.21 13.89L7 23L12 20L17 23L15.79 13.88" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <div class="achievement-info">
+                                    <div class="achievement-header">
+                                        <h3>Первые шаги</h3>
+                                        <span class="xp-badge">+100 XP</span>
+                                    </div>
+                                    <p>Завершите свой первый курс</p>
+                                    <div class="achievement-progress">
+                                        <div class="progress-bar" style="width: 100%"></div>
+                                        <span class="progress-text">Получено 15.03.2024</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Добавьте больше карточек достижений -->
+                        </div>
+                    </section>
+
+                    <!-- Обновленная секция "Настройки" -->
+                    <section class="profile-section" id="settings">
+                        <h2>Настройки профиля</h2>
+                        <div class="settings-tabs">
+                            <button class="settings-tab active" data-settings="profile">Профиль</button>
+                            <button class="settings-tab" data-settings="security">Безопасность</button>
+                            <button class="settings-tab" data-settings="notifications">Уведомления</button>
+                            <button class="settings-tab" data-settings="privacy">Приватность</button>
+                        </div>
+                        <div class="settings-content">
+                            <div class="settings-panel active" id="profile-settings">
+                                <form class="settings-form">
+                                    <div class="form-group">
+                                        <label for="fullName">Полное имя</label>
+                                        <input type="text" id="fullName" value="Иван Иванов">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" id="email" value="ivan@example.com">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">Телефон</label>
+                                        <input type="tel" id="phone" value="+7 (999) 123-45-67">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="bio">О себе</label>
+                                        <textarea id="bio" rows="4">Начинающий разработчик, изучаю Python и веб-разработку.</textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Уведомления</label>
+                                        <div class="notification-settings">
+                                            <label class="checkbox">
+                                                <input type="checkbox" checked>
+                                                <span>Email-уведомления о новых уроках</span>
+                                            </label>
+                                            <label class="checkbox">
+                                                <input type="checkbox" checked>
+                                                <span>Уведомления о скидках и акциях</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="save-btn">Сохранить изменения</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="settings-panel" id="security-settings">
+                                <form class="settings-form">
+                                    <div class="form-group">
+                                        <label for="currentPassword">Текущий пароль</label>
+                                        <input type="password" id="currentPassword">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="newPassword">Новый пароль</label>
+                                        <input type="password" id="newPassword">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="confirmPassword">Подтвердите пароль</label>
+                                        <input type="password" id="confirmPassword">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Двухфакторная аутентификация</label>
+                                        <div class="toggle-switch">
+                                            <input type="checkbox" id="2fa">
+                                            <label for="2fa"></label>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="save-btn">Сохранить изменения</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="settings-panel" id="notifications-settings">
+                                <form class="settings-form">
+                                    <div class="notification-group">
+                                        <h3>Email уведомления</h3>
+                                        <div class="notification-settings">
+                                            <label class="checkbox">
+                                                <input type="checkbox" checked>
+                                                <span>Email-уведомления о новых уроках</span>
+                                            </label>
+                                            <label class="checkbox">
+                                                <input type="checkbox" checked>
+                                                <span>Уведомления о скидках и акциях</span>
+                                            </label>
+                                            <label class="checkbox">
+                                                <input type="checkbox" checked>
+                                                <span>Напоминания о дедлайнах</span>
+                                            </label>
+                                            <label class="checkbox">
+                                                <input type="checkbox" checked>
+                                                <span>Новые комментарии к заданиям</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="notification-group">
+                                        <h3>Push уведомления</h3>
+                                        <div class="notification-settings">
+                                            <label class="checkbox">
+                                                <input type="checkbox" checked>
+                                                <span>Мгновенные уведомления о новых уроках</span>
+                                            </label>
+                                            <label class="checkbox">
+                                                <input type="checkbox" checked>
+                                                <span>Уведомления о достижениях</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="save-btn">Сохранить изменения</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="settings-panel" id="privacy-settings">
+                                <form class="settings-form">
+                                    <div class="form-group">
+                                        <label>Видимость профиля</label>
+                                        <select class="profile-visibility">
+                                            <option value="public">Публичный</option>
+                                            <option value="private">Приватный</option>
+                                            <option value="friends">Только друзья</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Показывать в профиле</label>
+                                        <div class="privacy-settings">
+                                            <label class="checkbox">
+                                                <input type="checkbox" checked>
+                                                <span>Прогресс обучения</span>
+                                            </label>
+                                            <label class="checkbox">
+                                                <input type="checkbox" checked>
+                                                <span>Достижения</span>
+                                            </label>
+                                            <label class="checkbox">
+                                                <input type="checkbox" checked>
+                                                <span>Статистику активности</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="save-btn">Сохранить изменения</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <!-- Футер -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>SkillBoost</h2>
+                    <p>Образовательная платформа<br>для развития digital-навыков</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h3>Поддержка</h3>
+                        <a href="#">FAQ</a>
+                        <a href="#">Контакты</a>
+                        <a href="#">Обратная связь</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 SkillBoost. Все права защищены</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="profile.js"></script>
+</body>
+</html> 

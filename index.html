@@ -112,8 +112,16 @@
                     <input type="text" placeholder="Поиск курса...">
                 </div>
                 <div class="icons">
-                    <img src="cart.svg" alt="Корзина" class="icon">
-                    <img src="profile.svg" alt="Профиль" class="icon">
+                    <a href="cart.html" class="cart-icon">
+                        <img src="cart.svg" alt="Корзина" class="icon">
+                        <span class="cart-counter">0</span>
+                    </a>
+                    <a href="profile.html" class="profile-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21"/>
+                            <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </header>
@@ -132,69 +140,75 @@
                 </div>
                 <div class="categories-grid">
                     <div class="category-card">
-                        <div class="course-image">
-                            <img src="images/istockphoto-1487445129-612x612.jpg" alt="Python Pro - Программирование">
-                            <div class="card-icon">
-                                <svg width="24" height="24">
-                                    <use href="#icon-programming"></use>
-                                </svg>
+                        <a href="course-details.html?course=blender" class="course-link">
+                            <div class="course-image">
+                                <img src="images/placeholder.png" alt="Python Pro - Программирование">
+                                <div class="card-icon">
+                                    <svg width="24" height="24">
+                                        <use href="#icon-programming"></use>
+                                    </svg>
+                                </div>
+                                <div class="card-tag">Топ продаж</div>
                             </div>
-                            <div class="card-tag">Топ продаж</div>
-                        </div>
-                        <h3>Python Pro</h3>
-                        <p>Разработка на Python</p>
-                        <div class="price-block">
-                            <span class="price">45 000 ₽</span>
-                            <span class="old-price">89 000 ₽</span>
-                        </div>
-                        <div class="card-footer">
-                            <span class="students">3.2k учеников</span>
-                            <span class="rating">4.9 ★</span>
-                        </div>
+                            <h3>Python Pro</h3>
+                            <p>Разработка на Python</p>
+                            <div class="price-block">
+                                <span class="price">45 000 ₽</span>
+                                <span class="old-price">89 000 ₽</span>
+                            </div>
+                            <div class="card-footer">
+                                <span class="students">3.2k учеников</span>
+                                <span class="rating">4.9 ★</span>
+                            </div>
+                        </a>
                     </div>
 
                     <div class="category-card">
-                        <div class="course-image">
-                            <img src="images/design-course.jpg" alt="UI/UX Design">
-                            <div class="card-icon">
-                                <svg width="24" height="24">
-                                    <use href="#icon-design"></use>
-                                </svg>
+                        <a href="course-details.html?course=blender" class="course-link">
+                            <div class="course-image">
+                                <img src="images/placeholder.png" alt="UI/UX Design">
+                                <div class="card-icon">
+                                    <svg width="24" height="24">
+                                        <use href="#icon-design"></use>
+                                    </svg>
+                                </div>
+                                <div class="card-tag">Новый курс</div>
                             </div>
-                            <div class="card-tag">Новый курс</div>
-                        </div>
-                        <h3>UI/UX Design</h3>
-                        <p>Дизайн интерфейсов</p>
-                        <div class="price-block">
-                            <span class="price">35 000 ₽</span>
-                            <span class="old-price">70 000 ₽</span>
-                        </div>
-                        <div class="card-footer">
-                            <span class="students">1.5k учеников</span>
-                            <span class="rating">4.8 ★</span>
-                        </div>
+                            <h3>UI/UX Design</h3>
+                            <p>Дизайн интерфейсов</p>
+                            <div class="price-block">
+                                <span class="price">35 000 ₽</span>
+                                <span class="old-price">70 000 ₽</span>
+                            </div>
+                            <div class="card-footer">
+                                <span class="students">1.5k учеников</span>
+                                <span class="rating">4.8 ★</span>
+                            </div>
+                        </a>
                     </div>
 
                     <div class="category-card">
-                        <div class="course-image">
-                            <img src="images/marketing-course.jpg" alt="Digital Marketing">
-                            <div class="card-icon">
-                                <svg width="24" height="24">
-                                    <use href="#icon-marketing"></use>
-                                </svg>
+                        <a href="course-details.html?course=blender" class="course-link">
+                            <div class="course-image">
+                                <img src="images/placeholder.png" alt="Digital Marketing">
+                                <div class="card-icon">
+                                    <svg width="24" height="24">
+                                        <use href="#icon-marketing"></use>
+                                    </svg>
+                                </div>
+                                <div class="card-tag">Популярный</div>
                             </div>
-                            <div class="card-tag">Популярный</div>
-                        </div>
-                        <h3>Digital Marketing</h3>
-                        <p>Интернет-маркетинг</p>
-                        <div class="price-block">
-                            <span class="price">40 000 ₽</span>
-                            <span class="old-price">75 000 ₽</span>
-                        </div>
-                        <div class="card-footer">
-                            <span class="students">2.8k учеников</span>
-                            <span class="rating">4.7 ★</span>
-                        </div>
+                            <h3>Digital Marketing</h3>
+                            <p>Интернет-маркетинг</p>
+                            <div class="price-block">
+                                <span class="price">40 000 ₽</span>
+                                <span class="old-price">75 000 ₽</span>
+                            </div>
+                            <div class="card-footer">
+                                <span class="students">2.8k учеников</span>
+                                <span class="rating">4.7 ★</span>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </section>
@@ -210,164 +224,190 @@
                 </div>
                 <div class="category-list">
                     <div class="category-item">
-                        <div class="category-info">
-                            <span class="category-name">Бизнес</span>
-                            <span class="course-count">12 курсов</span>
-                        </div>
-                        <div class="category-meta">
-                            <span class="difficulty">Начальный</span>
-                            <span class="dimension">
-                                <img src="icons/business.svg" alt="Бизнес" width="24" height="24">
-                            </span>
-                        </div>
+                        <a href="courses.html" class="category-link">
+                            <div class="category-info">
+                                <span class="category-name">Бизнес</span>
+                                <span class="course-count">12 курсов</span>
+                            </div>
+                            <div class="category-meta">
+                                <span class="difficulty">Начальный</span>
+                                <span class="dimension">
+                                    <img src="icons/business.svg" alt="Бизнес" width="24" height="24">
+                                </span>
+                            </div>
+                        </a>
                     </div>
                     <div class="category-item">
-                        <div class="category-info">
-                            <span class="category-name">Маркетинг</span>
-                            <span class="course-count">12 курсов</span>
-                        </div>
-                        <div class="category-meta">
-                            <span class="difficulty">Продвинутый</span>
-                            <span class="dimension">
-                                <img src="icons/marketing.svg" alt="Маркетинг" width="24" height="24">
-                            </span>
-                        </div>
+                        <a href="courses.html" class="category-link">
+                            <div class="category-info">
+                                <span class="category-name">Маркетинг</span>
+                                <span class="course-count">12 курсов</span>
+                            </div>
+                            <div class="category-meta">
+                                <span class="difficulty">Продвинутый</span>
+                                <span class="dimension">
+                                    <img src="icons/marketing.svg" alt="Маркетинг" width="24" height="24">
+                                </span>
+                            </div>
+                        </a>
                     </div>
                     <div class="category-item">
-                        <div class="category-info">
-                            <span class="category-name">Графика и Дизайн</span>
-                            <span class="course-count">10 курсов</span>
-                        </div>
-                        <div class="category-meta">
-                            <span class="difficulty">Начальный</span>
-                            <span class="dimension">
-                                <img src="icons/design.svg" alt="Дизайн" width="24" height="24">
-                            </span>
-                        </div>
+                        <a href="courses.html" class="category-link">
+                            <div class="category-info">
+                                <span class="category-name">Графика и Дизайн</span>
+                                <span class="course-count">10 курсов</span>
+                            </div>
+                            <div class="category-meta">
+                                <span class="difficulty">Начальный</span>
+                                <span class="dimension">
+                                    <img src="icons/design.svg" alt="Дизайн" width="24" height="24">
+                                </span>
+                            </div>
+                        </a>
                     </div>
                     <div class="category-item">
-                        <div class="category-info">
-                            <span class="category-name">Программирование</span>
-                            <span class="course-count">45 курсов</span>
-                        </div>
-                        <div class="category-meta">
-                            <span class="difficulty">Продвинутый</span>
-                            <span class="dimension">
-                                <img src="icons/programming.svg" alt="Программирование" width="24" height="24">
-                            </span>
-                        </div>
+                        <a href="courses.html" class="category-link">
+                            <div class="category-info">
+                                <span class="category-name">Программирование</span>
+                                <span class="course-count">45 курсов</span>
+                            </div>
+                            <div class="category-meta">
+                                <span class="difficulty">Продвинутый</span>
+                                <span class="dimension">
+                                    <img src="icons/programming.svg" alt="Программирование" width="24" height="24">
+                                </span>
+                            </div>
+                        </a>
                     </div>
                     <div class="category-item">
-                        <div class="category-info">
-                            <span class="category-name">Фото и Видео</span>
-                            <span class="course-count">35 курсов</span>
-                        </div>
-                        <div class="category-meta">
-                            <span class="difficulty">Средний</span>
-                            <span class="dimension">
-                                <img src="icons/media.svg" alt="Фото и Видео" width="24" height="24">
-                            </span>
-                        </div>
+                        <a href="courses.html" class="category-link">
+                            <div class="category-info">
+                                <span class="category-name">Фото и Видео</span>
+                                <span class="course-count">35 курсов</span>
+                            </div>
+                            <div class="category-meta">
+                                <span class="difficulty">Средний</span>
+                                <span class="dimension">
+                                    <img src="icons/media.svg" alt="Фото и Видео" width="24" height="24">
+                                </span>
+                            </div>
+                        </a>
                     </div>
                     <div class="category-item">
-                        <div class="category-info">
-                            <span class="category-name">Финансы</span>
-                            <span class="course-count">12 курсов</span>
-                        </div>
-                        <div class="category-meta">
-                            <span class="difficulty">Продвинутый</span>
-                            <span class="dimension">
-                                <img src="icons/finance.svg" alt="Финансы" width="24" height="24">
-                            </span>
-                        </div>
+                        <a href="courses.html" class="category-link">
+                            <div class="category-info">
+                                <span class="category-name">Финансы</span>
+                                <span class="course-count">12 курсов</span>
+                            </div>
+                            <div class="category-meta">
+                                <span class="difficulty">Продвинутый</span>
+                                <span class="dimension">
+                                    <img src="icons/finance.svg" alt="Финансы" width="24" height="24">
+                                </span>
+                            </div>
+                        </a>
                     </div>
                     <div class="category-item">
-                        <div class="category-info">
-                            <span class="category-name">Иностранный язык</span>
-                            <span class="course-count">10 курсов</span>
-                        </div>
-                        <div class="category-meta">
-                            <span class="difficulty">Начальный</span>
-                            <span class="dimension">
-                                <img src="icons/language.svg" alt="Иностранный язык" width="24" height="24">
-                            </span>
-                        </div>
+                        <a href="courses.html" class="category-link">
+                            <div class="category-info">
+                                <span class="category-name">Иностранный язык</span>
+                                <span class="course-count">10 курсов</span>
+                            </div>
+                            <div class="category-meta">
+                                <span class="difficulty">Начальный</span>
+                                <span class="dimension">
+                                    <img src="icons/language.svg" alt="Иностранный язык" width="24" height="24">
+                                </span>
+                            </div>
+                        </a>
                     </div>
                     <div class="category-item">
-                        <div class="category-info">
-                            <span class="category-name">Инвестиции</span>
-                            <span class="course-count">45 курсов</span>
-                        </div>
-                        <div class="category-meta">
-                            <span class="difficulty">Продвинутый</span>
-                            <span class="dimension">
-                                <img src="icons/investment.svg" alt="Инвестиции" width="24" height="24">
-                            </span>
-                        </div>
+                        <a href="courses.html" class="category-link">
+                            <div class="category-info">
+                                <span class="category-name">Инвестиции</span>
+                                <span class="course-count">45 курсов</span>
+                            </div>
+                            <div class="category-meta">
+                                <span class="difficulty">Продвинутый</span>
+                                <span class="dimension">
+                                    <img src="icons/investment.svg" alt="Инвестиции" width="24" height="24">
+                                </span>
+                            </div>
+                        </a>
                     </div>
                     <div class="category-item">
-                        <div class="category-info">
-                            <span class="category-name">Дети и Родители</span>
-                            <span class="course-count">12 курсов</span>
-                        </div>
-                        <div class="category-meta">
-                            <span class="difficulty">Начальный</span>
-                            <span class="dimension">
-                                <img src="icons/family.svg" alt="Дети и Родители" width="24" height="24">
-                            </span>
-                        </div>
+                        <a href="courses.html" class="category-link">
+                            <div class="category-info">
+                                <span class="category-name">Дети и Родители</span>
+                                <span class="course-count">12 курсов</span>
+                            </div>
+                            <div class="category-meta">
+                                <span class="difficulty">Начальный</span>
+                                <span class="dimension">
+                                    <img src="icons/family.svg" alt="Дети и Родители" width="24" height="24">
+                                </span>
+                            </div>
+                        </a>
                     </div>
                     <div class="category-item">
-                        <div class="category-info">
-                            <span class="category-name">Здоровье и спорт</span>
-                            <span class="course-count">45 курсов</span>
-                        </div>
-                        <div class="category-meta">
-                            <span class="difficulty">Средний</span>
-                            <span class="dimension">
-                                <svg width="24" height="24">
-                                    <use href="#icon-health"></use>
-                                </svg>
-                            </span>
-                        </div>
+                        <a href="courses.html" class="category-link">
+                            <div class="category-info">
+                                <span class="category-name">Здоровье и спорт</span>
+                                <span class="course-count">45 курсов</span>
+                            </div>
+                            <div class="category-meta">
+                                <span class="difficulty">Средний</span>
+                                <span class="dimension">
+                                    <svg width="24" height="24">
+                                        <use href="#icon-health"></use>
+                                    </svg>
+                                </span>
+                            </div>
+                        </a>
                     </div>
                     <div class="category-item">
-                        <div class="category-info">
-                            <span class="category-name">Пикап и Отношения</span>
-                            <span class="course-count">45 курсов</span>
-                        </div>
-                        <div class="category-meta">
-                            <span class="difficulty">Продвинутый</span>
-                            <span class="dimension">
-                                <img src="icons/relationships.svg" alt="Пикап и Отношения" width="24" height="24">
-                            </span>
-                        </div>
+                        <a href="courses.html" class="category-link">
+                            <div class="category-info">
+                                <span class="category-name">Пикап и Отношения</span>
+                                <span class="course-count">45 курсов</span>
+                            </div>
+                            <div class="category-meta">
+                                <span class="difficulty">Продвинутый</span>
+                                <span class="dimension">
+                                    <img src="icons/relationships.svg" alt="Пикап и Отношения" width="24" height="24">
+                                </span>
+                            </div>
+                        </a>
                     </div>
                     <div class="category-item">
-                        <div class="category-info">
-                            <span class="category-name">Курсы по Музыке</span>
-                            <span class="course-count">10 курсов</span>
-                        </div>
-                        <div class="category-meta">
-                            <span class="difficulty">Начальный</span>
-                            <span class="dimension">
-                                <img src="icons/music.svg" alt="Курсы по Музыке" width="24" height="24">
-                            </span>
-                        </div>
+                        <a href="courses.html" class="category-link">
+                            <div class="category-info">
+                                <span class="category-name">Курсы по Музыке</span>
+                                <span class="course-count">10 курсов</span>
+                            </div>
+                            <div class="category-meta">
+                                <span class="difficulty">Начальный</span>
+                                <span class="dimension">
+                                    <img src="icons/music.svg" alt="Курсы по Музыке" width="24" height="24">
+                                </span>
+                            </div>
+                        </a>
                     </div>
                     <div class="category-item">
-                        <div class="category-info">
-                            <span class="category-name">Курсы по Психологии</span>
-                            <span class="course-count">45 курсов</span>
-                        </div>
-                        <div class="category-meta">
-                            <span class="difficulty">Продвинутый</span>
-                            <span class="dimension">
-                                <svg width="24" height="24">
-                                    <use href="#icon-psychology"></use>
-                                </svg>
-                            </span>
-                        </div>
+                        <a href="courses.html" class="category-link">
+                            <div class="category-info">
+                                <span class="category-name">Курсы по Психологии</span>
+                                <span class="course-count">45 курсов</span>
+                            </div>
+                            <div class="category-meta">
+                                <span class="difficulty">Продвинутый</span>
+                                <span class="dimension">
+                                    <svg width="24" height="24">
+                                        <use href="#icon-psychology"></use>
+                                    </svg>
+                                </span>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </section>
@@ -393,6 +433,34 @@
             </div>
         </footer>
     </div>
-    <script src="script.js"></script>
+    
+    <script src="js/courses-data.js"></script>
+    <script src="js/search.js"></script>
+    <script src="cart.js"></script>
+    <script>
+        // Обработка прокрутки для хедера
+        const header = document.querySelector('header');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            // Добавляем класс scrolled при прокрутке
+            if (currentScroll > 0) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        // Обновление счетчика корзины при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartCounter = document.querySelector('.cart-counter');
+            const cartItems = JSON.parse(localStorage.getItem('cart') || '[]');
+            cartCounter.textContent = cartItems.length;
+        });
+    </script>
 </body>
 </html> 

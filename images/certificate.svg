@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Фон сертификата -->
+    <rect width="800" height="600" rx="20" fill="#1A1A1A"/>
+    
+    <!-- Декоративный паттерн -->
+    <path d="M0 20C0 8.95431 8.95431 0 20 0H780C791.046 0 800 8.95431 800 20V80H0V20Z" fill="#8EFF00" fill-opacity="0.1"/>
+    
+    <!-- Логотип -->
+    <circle cx="400" cy="60" r="30" fill="#8EFF00"/>
+    <text x="400" y="70" text-anchor="middle" font-family="Inter" font-size="24" font-weight="bold" fill="white">SB</text>
+    
+    <!-- Заголовок -->
+    <text x="400" y="160" text-anchor="middle" font-family="Inter" font-size="36" font-weight="bold" fill="white">СЕРТИФИКАТ</text>
+    <text x="400" y="200" text-anchor="middle" font-family="Inter" font-size="24" fill="#A0A0A0">об успешном прохождении курса</text>
+    
+    <!-- Линия -->
+    <line x1="200" y1="240" x2="600" y2="240" stroke="#8EFF00" stroke-width="2" stroke-dasharray="4 4"/>
+    
+    <!-- Название курса -->
+    <text x="400" y="300" text-anchor="middle" font-family="Inter" font-size="28" font-weight="bold" fill="white">Blender 2023</text>
+    <text x="400" y="340" text-anchor="middle" font-family="Inter" font-size="28" font-weight="bold" fill="white">Полный базовый курс 3D моделирования</text>
+    
+    <!-- Декоративные элементы -->
+    <circle cx="150" cy="450" r="60" fill="none" stroke="#8EFF00" stroke-width="2"/>
+    <circle cx="650" cy="450" r="60" fill="none" stroke="#8EFF00" stroke-width="2"/>
+    
+    <!-- QR код (имитация) -->
+    <rect x="150" y="420" width="60" height="60" rx="8" fill="#8EFF00" fill-opacity="0.2"/>
+    <rect x="160" y="430" width="40" height="40" rx="4" fill="#8EFF00" fill-opacity="0.4"/>
+    
+    <!-- Подпись -->
+    <line x1="550" y1="440" x2="750" y2="440" stroke="#FFFFFF" stroke-width="1"/>
+    <text x="650" y="470" text-anchor="middle" font-family="Inter" font-size="16" fill="#A0A0A0">Подпись</text>
+    
+    <!-- Дата -->
+    <text x="400" y="520" text-anchor="middle" font-family="Inter" font-size="18" fill="#A0A0A0">21.10.2023</text>
+    
+    <!-- Уникальный номер -->
+    <text x="400" y="550" text-anchor="middle" font-family="Inter" font-size="14" fill="#666666">№ SB-2023-10-21-001</text>
+    
+    <!-- Декоративные углы -->
+    <path d="M40 0L80 0L80 40" stroke="#8EFF00" stroke-width="4"/>
+    <path d="M760 0L720 0L720 40" stroke="#8EFF00" stroke-width="4"/>
+    <path d="M40 600L80 600L80 560" stroke="#8EFF00" stroke-width="4"/>
+    <path d="M760 600L720 600L720 560" stroke="#8EFF00" stroke-width="4"/>
+</svg> 
