@@ -355,6 +355,7 @@
         </footer>
     </div>
     <script src="cart.js"></script>
+    <script src="favorites.js"></script>
     <script>
         function addToCart(course) {
             Cart.addItem(course);
@@ -372,56 +373,29 @@
         }
 
         function toggleBookmark(courseId) {
+            event.preventDefault();
             const button = event.currentTarget;
-            button.classList.toggle('active');
+            const courseCard = button.closest('.course-card');
             
-            // Обновляем иконку
-            if (button.classList.contains('active')) {
-                button.innerHTML = `
-                    <svg width="24" height="24">
-                        <use href="#icon-bookmark-filled"/>
-                    </svg>
-                `;
+            const course = {
+                id: courseId,
+                title: courseCard.querySelector('h3').textContent,
+                description: courseCard.querySelector('.course-description').textContent,
+                image: courseCard.querySelector('.course-image img').src,
+                lessons: '20' // Можно добавить динамическое получение количества уроков
+            };
+
+            if (FavoritesManager.isInFavorites(courseId)) {
+                FavoritesManager.removeFromFavorites(courseId);
             } else {
-                button.innerHTML = `
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path d="M19 21L12 16L5 21V5C5 4.46957 5.21071 3.96086 5.58579 3.58579C5.96086 3.21071 6.46957 3 7 3H17C17.5304 3 18.0391 3.21071 18.4142 3.58579C18.7893 3.96086 19 4.46957 19 5V21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                `;
+                FavoritesManager.addToFavorites(course);
             }
-            
-            // Получаем текущий список избранного из localStorage
-            let bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
-            
-            if (button.classList.contains('active')) {
-                // Добавляем курс в избранное
-                if (!bookmarks.includes(courseId)) {
-                    bookmarks.push(courseId);
-                }
-            } else {
-                // Удаляем курс из избранного
-                bookmarks = bookmarks.filter(id => id !== courseId);
-            }
-            
-            // Сохраняем обновленный список
-            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
         }
 
         // Восстанавливаем состояние кнопок при загрузке страницы
         document.addEventListener('DOMContentLoaded', function() {
             // Восстанавливаем состояние закладок
-            const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
-            bookmarks.forEach(courseId => {
-                const button = document.querySelector(`[onclick*="toggleBookmark('${courseId}')"]`);
-                if (button) {
-                    button.classList.add('active');
-                    button.innerHTML = `
-                        <svg width="24" height="24">
-                            <use href="#icon-bookmark-filled"/>
-                        </svg>
-                    `;
-                }
-            });
+            FavoritesManager.updateUI();
 
             // Восстанавливаем состояние кнопок корзины
             const cart = JSON.parse(localStorage.getItem('cart') || '[]');

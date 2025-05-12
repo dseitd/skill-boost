@@ -535,5 +535,12 @@
     </div>
 
     <script src="profile.js"></script>
+    <script src="favorites.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Обновляем раздел избранного при загрузке страницы
+            FavoritesManager.updateUI();
+        });
+    </script>
 </body>
 </html> 

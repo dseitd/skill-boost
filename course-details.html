@@ -251,6 +251,42 @@
     </div>
 
     <script src="cart.js"></script>
+    <script src="favorites.js"></script>
     <script src="course-details.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const courseId = new URLSearchParams(window.location.search).get('id');
+            const bookmarkButton = document.querySelector('.bookmark-button');
+            
+            if (bookmarkButton && courseId) {
+                // Обработчик клика по кнопке избранного
+                bookmarkButton.addEventListener('click', function() {
+                    const course = {
+                        id: courseId,
+                        title: document.querySelector('.hero-title').textContent,
+                        description: document.querySelector('.hero-subtitle').textContent,
+                        image: document.querySelector('.preview-slide.active img')?.src || 'images/placeholder.png',
+                        lessons: document.querySelector('.meta-item:first-child span').textContent
+                    };
+
+                    if (FavoritesManager.isInFavorites(courseId)) {
+                        FavoritesManager.removeFromFavorites(courseId);
+                    } else {
+                        FavoritesManager.addToFavorites(course);
+                    }
+                });
+
+                // Обновляем состояние кнопки при загрузке
+                if (FavoritesManager.isInFavorites(courseId)) {
+                    bookmarkButton.classList.add('active');
+                    bookmarkButton.innerHTML = `
+                        <svg width="24" height="24">
+                            <use href="#icon-bookmark-filled"/>
+                        </svg>
+                    `;
+                }
+            }
+        });
+    </script>
 </body>
 </html> 
