@@ -168,4 +168,35 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'profile.html'; // Перенаправляем на страницу профиля
         });
     }
+
+    // Мобильное меню
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+
+    if (mobileMenuToggle && mobileMenu) {
+        mobileMenuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+            document.body.classList.toggle('menu-open');
+        });
+        
+        // Закрывать меню при клике на ссылку внутри меню
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenuToggle.classList.remove('active');
+                mobileMenu.classList.remove('open');
+                document.body.classList.remove('menu-open');
+            });
+        });
+    }
+
+    // Закрывать меню при изменении размера окна (если открыто)
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && mobileMenu && mobileMenu.classList.contains('open')) {
+            mobileMenuToggle.classList.remove('active');
+            mobileMenu.classList.remove('open');
+            document.body.classList.remove('menu-open');
+        }
+    });
 }); 
