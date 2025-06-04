@@ -15,6 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetSection = document.getElementById(item.dataset.tab);
             if (targetSection) {
                 targetSection.classList.add('active');
+                
+                // Если переключились на вкладку избранного, обновляем содержимое
+                if (item.dataset.tab === 'favorites' && window.Favorites) {
+                    setTimeout(() => {
+                        Favorites.renderFavoritesInProfile();
+                    }, 50);
+                }
             }
         });
     });

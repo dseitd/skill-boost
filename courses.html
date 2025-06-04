@@ -37,7 +37,12 @@
                         <img src="cart.svg" alt="Корзина" class="icon">
                         <span class="cart-counter">0</span>
                     </a>
-                    <img src="profile.svg" alt="Профиль" class="icon">
+                    <a href="profile.html" class="profile-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21"/>
+                            <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </header>
@@ -336,6 +341,7 @@
 
     <script src="js/courses-data.js"></script>
     <script src="js/search.js"></script>
+    <script src="js/favorites.js"></script>
     <script>
         function addToCart(course) {
             Cart.addItem(course);
@@ -354,56 +360,31 @@
 
         function toggleBookmark(courseId) {
             const button = event.currentTarget;
-            button.classList.toggle('active');
+            const courseCard = button.closest('.course-card');
             
-            // Обновляем иконку
-            if (button.classList.contains('active')) {
-                button.innerHTML = `
-                    <svg width="24" height="24">
-                        <use href="#icon-bookmark-filled"/>
-                    </svg>
-                `;
-            } else {
-                button.innerHTML = `
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path d="M19 21L12 16L5 21V5C5 4.46957 5.21071 3.96086 5.58579 3.58579C5.96086 3.21071 6.46957 3 7 3H17C17.5304 3 18.0391 3.21071 18.4142 3.58579C18.7893 3.96086 19 4.46957 19 5V21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                `;
-            }
+            // Извлекаем данные курса
+            const title = courseCard.querySelector('h3').textContent;
+            const priceElement = courseCard.querySelector('.current-price');
+            const price = priceElement ? parseInt(priceElement.textContent.replace(/\D/g, '')) : 0;
+            const image = courseCard.querySelector('img').src;
+            const description = courseCard.querySelector('.course-description').textContent;
             
-            // Получаем текущий список избранного из localStorage
-            let bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+            const courseData = {
+                id: courseId,
+                title: title,
+                price: price,
+                image: image,
+                description: description
+            };
             
-            if (button.classList.contains('active')) {
-                // Добавляем курс в избранное
-                if (!bookmarks.includes(courseId)) {
-                    bookmarks.push(courseId);
-                }
-            } else {
-                // Удаляем курс из избранного
-                bookmarks = bookmarks.filter(id => id !== courseId);
-            }
-            
-            // Сохраняем обновленный список
-            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+            // Используем систему Favorites для toggle
+            Favorites.toggle(courseData);
         }
 
         // Восстанавливаем состояние кнопок при загрузке страницы
         document.addEventListener('DOMContentLoaded', function() {
-            // Восстанавливаем состояние закладок
-            const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
-            bookmarks.forEach(courseId => {
-                const button = document.querySelector(`[onclick*="toggleBookmark('${courseId}')"]`);
-                if (button) {
-                    button.classList.add('active');
-                    button.innerHTML = `
-                        <svg width="24" height="24">
-                            <use href="#icon-bookmark-filled"/>
-                        </svg>
-                    `;
-                }
-            });
-
+            // Favorites.js автоматически восстановит состояние закладок
+            
             // Восстанавливаем состояние кнопок корзины
             const cart = JSON.parse(localStorage.getItem('cart') || '[]');
             cart.forEach(item => {

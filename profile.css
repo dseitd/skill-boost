@@ -1155,4 +1155,398 @@
 
 .filter-btn.active {
     background: #5a5a5a;
+}
+
+/* Стили для избранных курсов */
+.favorites-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 28px;
+    margin-top: 32px;
+    padding: 0 4px;
+}
+
+/* Улучшенные стили для карточек избранного */
+.favorite-course {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+    border: 1px solid rgba(142, 255, 0, 0.1);
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.favorite-course:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 
+        0 24px 60px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(142, 255, 0, 0.3),
+        0 0 50px rgba(142, 255, 0, 0.1);
+}
+
+.favorite-course:hover .course-image img {
+    transform: scale(1.1);
+}
+
+/* Значок избранного */
+.favorite-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(142, 255, 0, 0.2);
+    border: 1px solid rgba(142, 255, 0, 0.3);
+    border-radius: 12px;
+    padding: 8px;
+    color: var(--accent-color);
+    z-index: 10;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.favorite-course:hover .favorite-badge {
+    background: rgba(142, 255, 0, 0.3);
+    transform: scale(1.1);
+    box-shadow: 0 4px 20px rgba(142, 255, 0, 0.2);
+}
+
+/* Изображение курса */
+.course-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+}
+
+.course-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: brightness(0.9);
+}
+
+/* Overlay при наведении */
+.course-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(142, 255, 0, 0.8), rgba(34, 197, 94, 0.8));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.favorite-course:hover .course-overlay {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.quick-preview-btn {
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1a1a1a;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.quick-preview-btn:hover {
+    transform: scale(1.1);
+    background: white;
+}
+
+/* Категория курса */
+.course-category {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--accent-color);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(142, 255, 0, 0.2);
+}
+
+/* Контент карточки */
+.course-content {
+    padding: 24px;
+}
+
+.course-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.course-header h3 {
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0;
+    flex: 1;
+    margin-right: 12px;
+}
+
+.remove-favorite-btn {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    border-radius: 12px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ef4444;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.remove-favorite-btn:hover {
+    background: rgba(239, 68, 68, 0.2);
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.course-description {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0 0 20px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Метаинформация */
+.course-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 16px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.course-stats {
+    display: flex;
+    gap: 16px;
+}
+
+.course-level,
+.course-duration {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.course-level svg,
+.course-duration svg {
+    color: var(--accent-color);
+}
+
+.course-price-block {
+    text-align: right;
+}
+
+.course-price {
+    color: var(--accent-color);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+/* Действия с курсом */
+.course-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.start-course-btn,
+.add-to-cart-btn {
+    flex: 1;
+    padding: 14px 20px;
+    border-radius: 16px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.start-course-btn {
+    background: linear-gradient(135deg, var(--accent-color), #22c55e);
+    border: none;
+    color: #1a1a1a;
+    box-shadow: 0 4px 16px rgba(142, 255, 0, 0.3);
+}
+
+.start-course-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(142, 255, 0, 0.4);
+}
+
+.add-to-cart-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.add-to-cart-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.add-to-cart-btn.added {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    border-color: #22c55e;
+    color: white;
+}
+
+/* Пустое состояние избранного */
+.empty-favorites {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 80px 40px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.empty-icon {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 32px;
+}
+
+.empty-icon svg {
+    color: rgba(142, 255, 0, 0.3);
+    animation: float 3s ease-in-out infinite;
+}
+
+.pulse-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    border: 2px solid rgba(142, 255, 0, 0.2);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.empty-favorites h3 {
+    color: white;
+    font-size: 24px;
+    margin: 0 0 16px 0;
+    font-weight: 600;
+}
+
+.empty-favorites p {
+    font-size: 16px;
+    margin: 0 0 32px 0;
+    line-height: 1.5;
+}
+
+.browse-courses-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, var(--accent-color), #22c55e);
+    color: #1a1a1a;
+    text-decoration: none;
+    padding: 16px 32px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 24px rgba(142, 255, 0, 0.3);
+}
+
+.browse-courses-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(142, 255, 0, 0.4);
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+    0%, 100% { 
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+    }
+    50% { 
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.2;
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .favorites-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-top: 24px;
+    }
+    
+    .favorite-course {
+        margin: 0 -4px;
+    }
+    
+    .course-actions {
+        flex-direction: column;
+    }
+    
+    .start-course-btn,
+    .add-to-cart-btn {
+        flex: none;
+    }
 } 

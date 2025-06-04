@@ -173,42 +173,7 @@
                             <h2>Избранные курсы</h2>
                         </div>
                         <div class="favorites-grid">
-                            <!-- Здесь будут отображаться избранные курсы -->
-                            <div class="course-card">
-                                <div class="course-progress">
-                                    <div class="progress-bar" style="width: 0%"></div>
-                                    <span class="progress-text">Не начат</span>
-                                </div>
-                                <div class="course-image">
-                                    <img src="./qcnCg1r8zF6Jb6FUzkPfN9t5Bilx12UGvItrfLQCc5lKT9MKMmn9F7m1o8JYczclprwDCrenoosrkfVvJEO6qx7u.jpg" alt="JavaScript Pro">
-                                </div>
-                                <div class="course-info">
-                                    <h3>JavaScript Pro</h3>
-                                    <p>Профессиональная разработка на JavaScript</p>
-                                    <div class="course-meta">
-                                        <span class="lessons-count">20 уроков</span>
-                                        <button class="start-btn">Начать</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="course-card">
-                                <div class="course-progress">
-                                    <div class="progress-bar" style="width: 0%"></div>
-                                    <span class="progress-text">Не начат</span>
-                                </div>
-                                <div class="course-image">
-                                    <img src="./qcnCg1r8zF6Jb6FUzkPfN9t5Bilx12UGvItrfLQCc5lKT9MKMmn9F7m1o8JYczclprwDCrenoosrkfVvJEO6qx7u.jpg" alt="React Мастер">
-                                </div>
-                                <div class="course-info">
-                                    <h3>React Мастер</h3>
-                                    <p>Создание современных веб-приложений</p>
-                                    <div class="course-meta">
-                                        <span class="lessons-count">25 уроков</span>
-                                        <button class="start-btn">Начать</button>
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- Контент будет загружен через JavaScript -->
                         </div>
                     </section>
 
@@ -513,6 +478,55 @@
         </main>
     </div>
 
+    <script src="js/favorites.js"></script>
+    <script src="cart.js"></script>
     <script src="profile.js"></script>
+    <script>
+        // Добавляем тестовые данные в избранное, если их нет
+        document.addEventListener('DOMContentLoaded', function() {
+            // Проверяем, есть ли уже избранные курсы
+            const existingFavorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+            
+            // Если избранного нет, добавляем тестовые курсы
+            if (existingFavorites.length === 0) {
+                const testCourses = [
+                    {
+                        id: 'blender-2023',
+                        title: 'Blender 2023 - Полный базовый курс 3D моделирования',
+                        price: 4900,
+                        image: './qcnCg1r8zF6Jb6FUzkPfN9t5Bilx12UGvItrfLQCc5lKT9MKMmn9F7m1o8JYczclprwDCrenoosrkfVvJEO6qx7u.jpg',
+                        description: 'Освойте основы 3D моделирования в Blender. От базовых инструментов до создания собственных 3D моделей.',
+                        addedToFavoritesAt: new Date().toISOString()
+                    },
+                    {
+                        id: 'javascript-pro',
+                        title: 'JavaScript: Полное руководство',
+                        price: 3900,
+                        image: './qcnCg1r8zF6Jb6FUzkPfN9t5Bilx12UGvItrfLQCc5lKT9MKMmn9F7m1o8JYczclprwDCrenoosrkfVvJEO6qx7u.jpg',
+                        description: 'Изучите JavaScript с нуля до профессионального уровня. React, Node.js и современная веб-разработка.',
+                        addedToFavoritesAt: new Date().toISOString()
+                    },
+                    {
+                        id: 'python-data-science',
+                        title: 'Python для Data Science и машинного обучения',
+                        price: 8900,
+                        image: './qcnCg1r8zF6Jb6FUzkPfN9t5Bilx12UGvItrfLQCc5lKT9MKMmn9F7m1o8JYczclprwDCrenoosrkfVvJEO6qx7u.jpg',
+                        description: 'Освойте анализ данных, машинное обучение и нейронные сети с Python. Pandas, NumPy, Scikit-learn и TensorFlow.',
+                        addedToFavoritesAt: new Date().toISOString()
+                    }
+                ];
+                
+                // Сохраняем тестовые курсы в localStorage
+                localStorage.setItem('favorites', JSON.stringify(testCourses));
+            }
+            
+            // Принудительно рендерим избранное через короткое время
+            setTimeout(() => {
+                if (window.Favorites) {
+                    Favorites.renderFavoritesInProfile();
+                }
+            }, 200);
+        });
+    </script>
 </body>
 </html> 
