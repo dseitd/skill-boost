@@ -148,17 +148,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Если это быстрый тап без движения
                 if (touchDuration < 500 && !touchMoved) {
-                    e.preventDefault();
+                    // НЕ БЛОКИРУЕМ событие - пусть браузер обрабатывает клик нормально
+                    // e.preventDefault(); // Убираем это!
                     
                     // Находим ссылку в карточке
                     const link = card.querySelector('a[href]') || card.closest('a[href]');
                     if (link) {
-                        // Добавляем небольшую задержку для визуального эффекта
-                        setTimeout(() => {
-                            if (link.href) {
-                                window.location.href = link.href;
-                            }
-                        }, 100);
+                        // Для мобильных устройств - используем нативный переход
+                        if (isTouch) {
+                            // Небольшая задержка только для визуального эффекта
+                            setTimeout(() => {
+                                link.click(); // Используем встроенный click вместо прямого перехода
+                            }, 100);
+                        }
                     }
                 }
             });
@@ -167,6 +169,36 @@ document.addEventListener('DOMContentLoaded', () => {
             card.addEventListener('touchcancel', () => {
                 card.style.transform = 'scale(1)';
                 card.style.transition = 'transform 0.3s ease';
+            });
+        });
+        
+        // Отдельная обработка для category-item (элементы списка категорий)
+        const categoryItems = document.querySelectorAll('.category-item');
+        categoryItems.forEach(item => {
+            // Убираем любые препятствия для кликов
+            item.addEventListener('click', (e) => {
+                // Если клик был по ссылке - позволяем обычную обработку
+                const link = e.target.closest('a[href]');
+                if (link) {
+                    // Просто позволяем браузеру обработать клик нормально
+                    return;
+                }
+            });
+            
+            // Добавляем визуальную обратную связь при клике
+            item.addEventListener('mousedown', () => {
+                item.style.transform = 'scale(0.98)';
+                item.style.transition = 'transform 0.1s ease';
+            });
+            
+            item.addEventListener('mouseup', () => {
+                item.style.transform = 'scale(1)';
+                item.style.transition = 'transform 0.3s ease';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'scale(1)';
+                item.style.transition = 'transform 0.3s ease';
             });
         });
     }
