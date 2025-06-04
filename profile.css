@@ -1549,4 +1549,606 @@
     .add-to-cart-btn {
         flex: none;
     }
+}
+
+/* Медиа-запросы для мобильной адаптивности профиля */
+
+/* Планшеты */
+@media (max-width: 1024px) {
+    .profile-container {
+        max-width: 95%;
+        padding: 0 16px;
+    }
+    
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 24px;
+    }
+    
+    .profile-avatar {
+        align-self: center;
+    }
+    
+    .profile-stats {
+        justify-content: center;
+    }
+    
+    .favorites-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+/* Планшеты в портретном режиме */
+@media (max-width: 768px) {
+    .profile-page {
+        padding: 20px 0;
+    }
+    
+    .profile-container {
+        padding: 0 12px;
+    }
+    
+    .profile-header {
+        padding: 24px 16px;
+        margin-bottom: 24px;
+    }
+    
+    .profile-avatar {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .profile-name {
+        font-size: 28px;
+    }
+    
+    .profile-email {
+        font-size: 14px;
+    }
+    
+    .profile-stats {
+        gap: 16px;
+    }
+    
+    .stat-item {
+        padding: 12px 16px;
+        min-width: 80px;
+    }
+    
+    .stat-number {
+        font-size: 20px;
+    }
+    
+    .stat-label {
+        font-size: 11px;
+    }
+    
+    .profile-nav {
+        padding: 0 16px;
+        margin-bottom: 24px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .profile-nav::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .nav-item {
+        white-space: nowrap;
+        min-width: 120px;
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+    
+    .profile-content {
+        padding: 0 16px;
+    }
+    
+    .profile-section {
+        padding: 20px 16px;
+    }
+    
+    .section-header h2 {
+        font-size: 22px;
+    }
+    
+    /* Адаптивная сетка избранного */
+    .favorites-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .favorite-course {
+        border-radius: 16px;
+    }
+    
+    .course-image {
+        height: 160px;
+    }
+    
+    .favorite-badge {
+        top: 12px;
+        right: 12px;
+        width: 32px;
+        height: 32px;
+    }
+    
+    .favorite-badge svg {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .course-category {
+        font-size: 10px;
+        padding: 4px 8px;
+        bottom: 8px;
+        left: 8px;
+    }
+    
+    .course-details {
+        padding: 16px;
+    }
+    
+    .course-title {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+    
+    .course-description {
+        font-size: 13px;
+        margin-bottom: 12px;
+    }
+    
+    .course-meta {
+        margin-bottom: 12px;
+    }
+    
+    .meta-item {
+        font-size: 11px;
+        padding: 4px 8px;
+    }
+    
+    .course-price {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+    
+    .course-actions {
+        gap: 8px;
+    }
+    
+    .add-to-cart-btn,
+    .remove-btn {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+}
+
+/* Мобильные устройства */
+@media (max-width: 480px) {
+    .profile-page {
+        padding: 16px 0;
+        background: var(--primary-color);
+    }
+    
+    .profile-container {
+        padding: 0 8px;
+        max-width: 100%;
+    }
+    
+    .profile-header {
+        padding: 20px 12px;
+        margin-bottom: 20px;
+        border-radius: 16px;
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+    }
+    
+    .profile-avatar {
+        width: 80px;
+        height: 80px;
+        align-self: center;
+    }
+    
+    .profile-info {
+        text-align: center;
+    }
+    
+    .profile-name {
+        font-size: 24px;
+        margin-bottom: 4px;
+    }
+    
+    .profile-email {
+        font-size: 13px;
+        margin-bottom: 16px;
+    }
+    
+    .profile-stats {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    
+    .stat-item {
+        padding: 10px 12px;
+        min-width: 70px;
+        border-radius: 10px;
+    }
+    
+    .stat-number {
+        font-size: 18px;
+    }
+    
+    .stat-label {
+        font-size: 10px;
+    }
+    
+    .profile-nav {
+        padding: 0 8px;
+        margin-bottom: 20px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    
+    .profile-nav::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .nav-items {
+        display: flex;
+        gap: 8px;
+        padding: 0 4px;
+    }
+    
+    .nav-item {
+        white-space: nowrap;
+        min-width: 100px;
+        padding: 10px 16px;
+        font-size: 13px;
+        border-radius: 12px;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-item.active {
+        background: var(--accent-color);
+        color: var(--primary-color);
+    }
+    
+    .profile-content {
+        padding: 0 8px;
+    }
+    
+    .profile-section {
+        padding: 16px 12px;
+        border-radius: 16px;
+        margin-bottom: 16px;
+    }
+    
+    .section-header h2 {
+        font-size: 18px;
+        margin-bottom: 16px;
+    }
+    
+    /* Мобильная сетка избранного */
+    .favorites-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 16px;
+    }
+    
+    .favorite-course {
+        border-radius: 16px;
+        overflow: hidden;
+        padding: 0;
+        position: relative;
+    }
+    
+    .course-image {
+        height: 180px;
+        position: relative;
+    }
+    
+    .course-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 16px 16px 0 0;
+    }
+    
+    .favorite-badge {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent-color);
+    }
+    
+    .favorite-badge svg {
+        width: 14px;
+        height: 14px;
+        fill: currentColor;
+    }
+    
+    .course-category {
+        position: absolute;
+        bottom: 8px;
+        left: 8px;
+        font-size: 9px;
+        padding: 4px 6px;
+        border-radius: 6px;
+        background: rgba(0, 0, 0, 0.8);
+        color: var(--accent-color);
+        backdrop-filter: blur(5px);
+    }
+    
+    .course-details {
+        padding: 16px 12px;
+        background: var(--card-bg);
+    }
+    
+    .course-title {
+        font-size: 16px;
+        line-height: 1.3;
+        margin-bottom: 8px;
+        color: var(--text-primary);
+        font-weight: 600;
+    }
+    
+    .course-description {
+        font-size: 12px;
+        line-height: 1.4;
+        color: var(--text-secondary);
+        margin-bottom: 12px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    
+    .course-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 12px;
+    }
+    
+    .meta-item {
+        font-size: 10px;
+        padding: 4px 6px;
+        border-radius: 4px;
+        background: rgba(142, 255, 0, 0.1);
+        color: var(--accent-color);
+    }
+    
+    .course-price {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--accent-color);
+        margin-bottom: 12px;
+    }
+    
+    .course-actions {
+        display: flex;
+        gap: 8px;
+        flex-direction: column;
+    }
+    
+    .add-to-cart-btn {
+        background: var(--accent-color);
+        color: var(--primary-color);
+        border: none;
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+    }
+    
+    .add-to-cart-btn:hover {
+        background: rgba(142, 255, 0, 0.9);
+        transform: translateY(-1px);
+    }
+    
+    .add-to-cart-btn svg {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .remove-btn {
+        background: rgba(255, 68, 68, 0.1);
+        color: #ff4444;
+        border: 1px solid rgba(255, 68, 68, 0.3);
+        padding: 10px 16px;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+    }
+    
+    .remove-btn:hover {
+        background: rgba(255, 68, 68, 0.2);
+        border-color: rgba(255, 68, 68, 0.5);
+    }
+    
+    .remove-btn svg {
+        width: 12px;
+        height: 12px;
+    }
+    
+    /* Пустое состояние избранного */
+    .empty-favorites {
+        text-align: center;
+        padding: 40px 16px;
+        color: var(--text-secondary);
+    }
+    
+    .empty-favorites svg {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 16px;
+        opacity: 0.5;
+    }
+    
+    .empty-favorites h3 {
+        font-size: 18px;
+        margin-bottom: 8px;
+        color: var(--text-primary);
+    }
+    
+    .empty-favorites p {
+        font-size: 14px;
+        line-height: 1.4;
+        margin-bottom: 24px;
+    }
+    
+    .browse-courses-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 20px;
+        background: var(--accent-color);
+        color: var(--primary-color);
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.3s ease;
+    }
+    
+    .browse-courses-link:hover {
+        background: rgba(142, 255, 0, 0.9);
+        transform: translateY(-2px);
+    }
+    
+    .browse-courses-link svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 360px) {
+    .profile-container {
+        padding: 0 4px;
+    }
+    
+    .profile-header {
+        padding: 16px 8px;
+    }
+    
+    .profile-name {
+        font-size: 20px;
+    }
+    
+    .profile-nav {
+        padding: 0 4px;
+    }
+    
+    .nav-item {
+        min-width: 90px;
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+    
+    .profile-section {
+        padding: 12px 8px;
+    }
+    
+    .section-header h2 {
+        font-size: 16px;
+    }
+    
+    .course-details {
+        padding: 12px 8px;
+    }
+    
+    .course-title {
+        font-size: 14px;
+    }
+    
+    .course-price {
+        font-size: 16px;
+    }
+}
+
+/* Ландшафтная ориентация на мобильных */
+@media (max-width: 768px) and (orientation: landscape) {
+    .profile-header {
+        flex-direction: row;
+        text-align: left;
+        padding: 16px 20px;
+    }
+    
+    .profile-info {
+        text-align: left;
+        flex: 1;
+    }
+    
+    .profile-stats {
+        justify-content: flex-start;
+    }
+    
+    .favorites-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .course-image {
+        height: 120px;
+    }
+}
+
+/* Touch-устройства */
+@media (hover: none) and (pointer: coarse) {
+    .favorite-course:hover {
+        transform: none;
+        box-shadow: var(--card-shadow);
+    }
+    
+    .favorite-course:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
+    
+    .nav-item:hover {
+        transform: none;
+    }
+    
+    .nav-item:active {
+        transform: scale(0.95);
+    }
+    
+    .add-to-cart-btn:hover,
+    .remove-btn:hover {
+        transform: none;
+    }
+    
+    .add-to-cart-btn:active,
+    .remove-btn:active {
+        transform: scale(0.95);
+    }
 } 
