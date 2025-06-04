@@ -78,19 +78,33 @@ const Cart = {
         const totalElement = document.querySelector('.cart-total-price');
         if (totalElement) {
             const total = this.items.reduce((sum, item) => sum + item.price, 0);
-            totalElement.textContent = `${total.toLocaleString()} ₽`;
+            totalElement.textContent = total.toLocaleString();
             
             // Анимация обновления цены
             totalElement.classList.add('update');
-            setTimeout(() => totalElement.classList.remove('update'), 300);
+            setTimeout(() => totalElement.classList.remove('update'), 600);
         }
     },
 
     // Показ уведомления
     showNotification(message, type = 'success') {
+        // Удаляем предыдущие уведомления
+        const existingNotifications = document.querySelectorAll('.notification');
+        existingNotifications.forEach(n => n.remove());
+
         const notification = document.createElement('div');
         notification.className = `notification ${type}`;
-        notification.textContent = message;
+        notification.innerHTML = `
+            <div class="notification-content">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    ${type === 'success' ? 
+                        '<path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' :
+                        '<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M15 9L9 15" stroke="currentColor" stroke-width="2"/><path d="M9 9L15 15" stroke="currentColor" stroke-width="2"/>'
+                    }
+                </svg>
+                <span>${message}</span>
+            </div>
+        `;
         document.body.appendChild(notification);
 
         setTimeout(() => {
@@ -101,8 +115,8 @@ const Cart = {
             notification.classList.remove('show');
             setTimeout(() => {
                 notification.remove();
-            }, 300);
-        }, 2000);
+            }, 400);
+        }, 3000);
     },
 
     // Рендер корзины
@@ -115,46 +129,33 @@ const Cart = {
 
         if (this.items.length === 0) {
             cartContent.style.display = 'none';
-            emptyMessage.innerHTML = `
-                <div class="cart-empty">
-                    <svg class="cart-empty-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3 3H5L5.4 5M5.4 5H21L17 13H7M5.4 5L7 13M7 13L4.707 15.293C4.077 15.923 4.523 17 5.414 17H17M17 17C16.4696 17 15.9609 17.2107 15.5858 17.5858C15.2107 17.9609 15 18.4696 15 19C15 19.5304 15.2107 20.0391 15.5858 20.4142C15.9609 20.7893 16.4696 21 17 21C17.5304 21 18.0391 20.7893 18.4142 20.4142C18.7893 20.0391 19 19.5304 19 19C19 18.4696 18.7893 17.9609 18.4142 17.5858C18.0391 17.2107 17.5304 17 17 17ZM9 19C9 19.5304 8.78929 20.0391 8.41421 20.4142C8.03914 20.7893 7.53043 21 7 21C6.46957 21 5.96086 20.7893 5.58579 20.4142C5.21071 20.0391 5 19.5304 5 19C5 18.4696 5.21071 17.9609 5.58579 17.5858C5.96086 17.2107 6.46957 17 7 17C7.53043 17 8.03914 17.2107 8.41421 17.5858C8.78929 17.9609 9 18.4696 9 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <h2 class="cart-empty-message">Ваша корзина пуста</h2>
-                    <p class="cart-empty-description">Добавьте курсы в корзину, чтобы оформить заказ</p>
-                    <a href="courses.html" class="return-to-courses">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M15.8337 10H4.16699" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M10.0003 15.8334L4.16699 10L10.0003 4.16669" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        Вернуться к курсам
-                    </a>
-                </div>
-            `;
             emptyMessage.style.display = 'block';
             return;
         }
 
         emptyMessage.style.display = 'none';
-        cartContent.style.display = 'flex';
+        cartContent.style.display = 'grid';
         cartItems.innerHTML = '';
 
-        this.items.sort((a, b) => new Date(b.addedAt) - new Date(a.addedAt)).forEach(item => {
+        this.items.sort((a, b) => new Date(b.addedAt || Date.now()) - new Date(a.addedAt || Date.now())).forEach((item, index) => {
             const cartItem = document.createElement('div');
             cartItem.className = 'cart-item';
             cartItem.dataset.courseId = item.id;
+            cartItem.style.animationDelay = `${index * 0.1}s`;
             cartItem.innerHTML = `
                 <div class="cart-item-image">
-                    <img src="${item.image}" alt="${item.title}">
+                    <img src="${item.image || 'images/placeholder.png'}" alt="${item.title}">
                 </div>
                 <div class="cart-item-info">
                     <h3>${item.title}</h3>
-                    <p class="cart-item-price">${item.price.toLocaleString()} ₽</p>
+                    <p class="cart-item-description">${item.description || 'Качественный курс для вашего развития'}</p>
+                    <div class="cart-item-price">${item.price.toLocaleString()}</div>
                 </div>
-                <button class="remove-item" onclick="Cart.removeItem('${item.id}')">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <button class="remove-item" onclick="Cart.removeItem('${item.id}')" title="Удалить из корзины">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M2.5 5H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M15.8337 5V16.6667C15.8337 17.5 15.0003 18.3333 14.167 18.3333H5.83366C5.00033 18.3333 4.16699 17.5 4.16699 16.6667V5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M6.66699 5V3.33333C6.66699 2.5 7.50033 1.66667 8.33366 1.66667H11.667C12.5003 1.66667 13.3337 2.5 13.3337 3.33333V5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
             `;
@@ -165,56 +166,63 @@ const Cart = {
     },
 
     checkEmptyCart() {
-        const cartContent = document.querySelector('.cart-content');
-        const emptyMessage = document.querySelector('.cart-empty-message');
-        
-        if (this.items.length === 0) {
-            if (cartContent) cartContent.style.display = 'none';
-            if (emptyMessage) {
-                emptyMessage.style.display = 'block';
-                emptyMessage.innerHTML = `
-                    <div class="empty-cart-content">
-                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
-                            <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 16M17 13L14.7 16M4.7 16H14.7M4.7 16L3 18H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        <h2>Корзина пуста</h2>
-                        <p>Добавьте курсы, которые хотите приобрести</p>
-                        <a href="courses.html" class="browse-courses-btn">Перейти к курсам</a>
-                    </div>
-                `;
-            }
+        const cartItems = document.querySelectorAll('.cart-item');
+        if (cartItems.length === 0) {
+            setTimeout(() => {
+                this.renderCart();
+            }, 500);
         }
     },
 
     showAddedToCartNotification() {
-        const notification = document.createElement('div');
-        notification.className = 'cart-notification';
-        notification.innerHTML = `
-            <div class="notification-content">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M16.6666 5L7.49992 14.1667L3.33325 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span>Курс добавлен в корзину</span>
-            </div>
-        `;
-        document.body.appendChild(notification);
-        
-        setTimeout(() => {
-            notification.classList.add('show');
-            setTimeout(() => {
-                notification.classList.remove('show');
-                setTimeout(() => notification.remove(), 300);
-            }, 2000);
-        }, 100);
+        // Анимация счетчика корзины
+        const cartIcon = document.querySelector('.cart-icon');
+        if (cartIcon) {
+            cartIcon.classList.add('animate');
+            setTimeout(() => cartIcon.classList.remove('animate'), 500);
+        }
+
+        // Показываем уведомление
+        this.showNotification('Курс добавлен в корзину!', 'success');
     }
 };
 
-// Инициализация корзины при загрузке страницы
-document.addEventListener('DOMContentLoaded', () => {
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
     Cart.init();
     
-    // Если мы на странице корзины, рендерим её
-    if (window.location.pathname.includes('cart.html')) {
+    // Если мы на странице корзины, рендерим корзину
+    if (document.querySelector('.cart-page')) {
         Cart.renderCart();
+        
+        // Обработчик для кнопки оформления заказа
+        const checkoutButton = document.querySelector('.checkout-button');
+        if (checkoutButton) {
+            checkoutButton.addEventListener('click', function() {
+                if (Cart.items.length === 0) {
+                    Cart.showNotification('Корзина пуста! Добавьте курсы для оформления заказа.', 'error');
+                    return;
+                }
+                
+                // Здесь будет логика оформления заказа
+                Cart.showNotification('Функция оформления заказа будет добавлена позже', 'success');
+            });
+        }
+        
+        // Обработчик для кнопки очистки корзины
+        const clearButton = document.querySelector('.clear-cart');
+        if (clearButton) {
+            clearButton.addEventListener('click', function() {
+                if (Cart.items.length === 0) {
+                    Cart.showNotification('Корзина уже пуста!', 'error');
+                    return;
+                }
+                
+                if (confirm('Вы уверены, что хотите очистить корзину?')) {
+                    Cart.clearCart();
+                    Cart.showNotification('Корзина очищена', 'success');
+                }
+            });
+        }
     }
 }); 

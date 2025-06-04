@@ -453,62 +453,6 @@ h2 {
 .category-item:nth-child(12) { animation-delay: 1.2s; }
 .category-item:nth-child(13) { animation-delay: 1.3s; }
 
-/* Футер */
-footer {
-    margin-top: 80px;
-    padding-top: 60px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.footer-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    margin-bottom: 40px;
-}
-
-.footer-logo h2 {
-    font-size: 28px;
-    margin-bottom: 16px;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.footer-logo p {
-    color: var(--text-secondary);
-}
-
-.footer-links {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.link-group h3 {
-    font-size: 18px;
-    margin-bottom: 20px;
-}
-
-.link-group a {
-    display: block;
-    color: var(--text-secondary);
-    text-decoration: none;
-    margin-bottom: 12px;
-    transition: color 0.3s ease;
-}
-
-.link-group a:hover {
-    color: var(--accent-color);
-}
-
-.footer-bottom {
-    padding: 20px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: center;
-    color: var(--text-secondary);
-    font-size: 14px;
-}
-
 /* Адаптивность */
 @media (max-width: 768px) {
     .header-content {
@@ -518,15 +462,6 @@ footer {
     
     .hero h2 {
         font-size: 36px;
-    }
-    
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-    
-    .footer-links {
-        justify-content: flex-start;
     }
     
     .categories-grid {
@@ -576,10 +511,6 @@ footer {
     .section-header {
         flex-direction: column;
         gap: 16px;
-    }
-    
-    .footer-links {
-        grid-template-columns: 1fr;
     }
 
     .cart-counter {
