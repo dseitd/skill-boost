@@ -1,0 +1,333 @@
+/* Дополнительные мобильные оптимизации */
+
+/* Переменные для мобильных устройств */
+:root {
+    --mobile-vh: 1vh;
+    --safe-area-top: env(safe-area-inset-top);
+    --safe-area-bottom: env(safe-area-inset-bottom);
+    --safe-area-left: env(safe-area-inset-left);
+    --safe-area-right: env(safe-area-inset-right);
+}
+
+/* Базовые оптимизации для мобильных */
+@media (max-width: 768px) {
+    /* Улучшенная типографика */
+    body {
+        font-size: 16px;
+        line-height: 1.5;
+        -webkit-text-size-adjust: 100%;
+        text-rendering: optimizeSpeed;
+    }
+    
+    /* Оптимизация производительности */
+    * {
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-perspective: 1000;
+        perspective: 1000;
+    }
+    
+    /* Улучшенная прокрутка */
+    .container {
+        overflow-x: hidden;
+        position: relative;
+    }
+    
+    /* Sticky элементы с safe area */
+    header {
+        top: var(--safe-area-top);
+        padding-top: calc(12px + var(--safe-area-top));
+    }
+    
+    /* Floating элементы с safe area */
+    .cart-notification,
+    .notification {
+        bottom: calc(24px + var(--safe-area-bottom));
+        left: calc(16px + var(--safe-area-left));
+        right: calc(16px + var(--safe-area-right));
+    }
+    
+    /* Улучшенные touch области */
+    .category-card,
+    .course-card {
+        cursor: pointer;
+        -webkit-tap-highlight-color: rgba(175, 242, 25, 0.1);
+        tap-highlight-color: rgba(175, 242, 25, 0.1);
+    }
+    
+    /* Оптимизация изображений */
+    img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        max-width: 100%;
+        height: auto;
+    }
+    
+    /* Keyboard handling */
+    .search-bar input {
+        font-size: 16px; /* Предотвращает zoom на iOS */
+        border-radius: 0; /* Убирает стандартные стили iOS */
+        -webkit-appearance: none;
+        appearance: none;
+    }
+    
+    /* Улучшенные анимации для touch */
+    @media (hover: none) and (pointer: coarse) {
+        .category-card,
+        .course-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .category-card:active,
+        .course-card:active {
+            transform: scale(0.98);
+            box-shadow: 
+                0 4px 16px rgba(0, 0, 0, 0.2),
+                0 0 0 1px rgba(175, 242, 25, 0.2);
+        }
+    }
+}
+
+/* Очень маленькие экраны (iPhone SE, старые Android) */
+@media (max-width: 360px) {
+    /* Уменьшаем отступы */
+    .container {
+        padding: 0 8px;
+    }
+    
+    /* Компактный header */
+    .header-content {
+        padding: 8px 0;
+        min-height: 56px;
+    }
+    
+    .logo h1 {
+        font-size: 16px;
+    }
+    
+    /* Компактные карточки */
+    .category-card {
+        padding: 16px 12px;
+    }
+    
+    .course-image {
+        height: 160px;
+    }
+    
+    .category-card h3 {
+        font-size: 16px;
+    }
+    
+    .category-card p {
+        font-size: 13px;
+    }
+    
+    /* Компактные кнопки */
+    .mobile-search-toggle,
+    .profile-icon,
+    .bookmark-button {
+        min-width: 40px;
+        min-height: 40px;
+        padding: 8px;
+    }
+}
+
+/* Большие экраны (iPhone Pro Max, большие Android) */
+@media (max-width: 768px) and (min-width: 415px) {
+    .category-card {
+        padding: 24px 20px;
+    }
+    
+    .course-image {
+        height: 220px;
+    }
+    
+    .category-card h3 {
+        font-size: 22px;
+    }
+    
+    .category-card p {
+        font-size: 16px;
+    }
+}
+
+/* Landscape на мобильных */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        padding: 16px 0;
+    }
+    
+    .hero h2 {
+        font-size: 24px;
+        margin-bottom: 8px;
+    }
+    
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+    
+    .course-image {
+        height: 140px;
+    }
+}
+
+/* Очень низкие landscape экраны */
+@media (max-width: 768px) and (orientation: landscape) and (max-height: 400px) {
+    .header-content {
+        padding: 4px 0;
+        min-height: 48px;
+    }
+    
+    .hero {
+        padding: 12px 0;
+    }
+    
+    .hero h2 {
+        font-size: 20px;
+        margin-bottom: 4px;
+    }
+    
+    .hero p {
+        font-size: 13px;
+    }
+    
+    .search-bar.mobile-active {
+        top: 48px;
+        padding: 8px 12px;
+    }
+}
+
+/* Accessibility медиа-запросы */
+@media (prefers-reduced-motion: reduce) {
+    .category-card,
+    .course-card,
+    .mobile-search-toggle,
+    .profile-icon {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+@media (prefers-contrast: high) {
+    .category-card,
+    .course-card {
+        border: 2px solid var(--text-color);
+        background: var(--primary-color);
+    }
+    
+    .mobile-search-toggle,
+    .profile-icon,
+    .bookmark-button {
+        border: 2px solid var(--accent-color);
+    }
+}
+
+/* Dark mode оптимизации */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+    
+    .category-card,
+    .course-card {
+        box-shadow: var(--card-shadow);
+    }
+}
+
+/* Принтер стили (если кто-то попытается распечатать на мобильном) */
+@media print {
+    .header-content,
+    .mobile-search-toggle,
+    .search-bar,
+    .icons {
+        display: none !important;
+    }
+    
+    .category-card,
+    .course-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+}
+
+/* PWA специфичные стили */
+@media (display-mode: standalone) {
+    /* Убираем top padding когда приложение в standalone режиме */
+    body {
+        padding-top: 0;
+    }
+    
+    /* Добавляем больше отступов для safe area */
+    .header-content {
+        padding-top: calc(16px + var(--safe-area-top));
+        padding-bottom: 16px;
+    }
+}
+
+/* Fold устройства (Galaxy Fold, Surface Duo) */
+@media (max-width: 768px) and (min-aspect-ratio: 13/9) {
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .header-content {
+        padding: 12px 20px;
+    }
+}
+
+/* Специальные оптимизации для iOS */
+@supports (-webkit-touch-callout: none) {
+    /* iOS specific styles */
+    .search-bar input {
+        -webkit-appearance: none;
+        border-radius: 0;
+    }
+    
+    .mobile-search-toggle,
+    .profile-icon,
+    .bookmark-button {
+        -webkit-touch-callout: none;
+    }
+    
+    /* Исправляем проблемы с viewport на iOS */
+    body {
+        height: calc(100vh - var(--safe-area-top) - var(--safe-area-bottom));
+        height: calc(100 * var(--mobile-vh) - var(--safe-area-top) - var(--safe-area-bottom));
+    }
+}
+
+/* Performance оптимизации */
+@media (max-width: 768px) {
+    /* Используем will-change для анимируемых элементов */
+    .category-card,
+    .course-card,
+    .mobile-search-toggle {
+        will-change: transform;
+    }
+    
+    /* Убираем will-change после анимации через JavaScript */
+    .category-card.animation-complete,
+    .course-card.animation-complete {
+        will-change: auto;
+    }
+}
+
+/* Styles for reduced data mode */
+@media (prefers-reduced-data: reduce) {
+    .course-image img,
+    .category-card img {
+        background-image: none;
+        background: var(--card-bg);
+    }
+    
+    .course-image::after {
+        content: '📚';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 3rem;
+        opacity: 0.5;
+    }
+} 

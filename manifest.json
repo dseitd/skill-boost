@@ -4,11 +4,13 @@
   "description": "Развивайте навыки будущего уже сегодня. Более 100 курсов по актуальным направлениям.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0a0a0a",
-  "theme_color": "#8eff00",
-  "orientation": "portrait-primary",
+  "background_color": "#171717",
+  "theme_color": "#AFF219",
+  "orientation": "any",
   "scope": "/",
   "lang": "ru",
+  "dir": "ltr",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
   "icons": [
     {
       "src": "icons/icon-72x72.png",
@@ -59,19 +61,28 @@
       "purpose": "maskable any"
     }
   ],
-  "categories": ["education", "productivity"],
+  "categories": ["education", "productivity", "lifestyle"],
   "screenshots": [
     {
       "src": "screenshots/mobile1.png",
       "sizes": "375x812",
       "type": "image/png",
-      "form_factor": "narrow"
+      "form_factor": "narrow",
+      "label": "Главная страница на мобильном"
+    },
+    {
+      "src": "screenshots/mobile2.png",
+      "sizes": "375x812",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Курсы на мобильном"
     },
     {
       "src": "screenshots/desktop1.png",
       "sizes": "1280x720",
       "type": "image/png",
-      "form_factor": "wide"
+      "form_factor": "wide",
+      "label": "Главная страница на десктопе"
     }
   ],
   "shortcuts": [
@@ -110,10 +121,29 @@
           "sizes": "192x192"
         }
       ]
+    },
+    {
+      "name": "Поиск",
+      "short_name": "Поиск",
+      "description": "Поиск курсов",
+      "url": "/?search=1",
+      "icons": [
+        {
+          "src": "icons/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
     }
   ],
   "prefer_related_applications": false,
   "edge_side_panel": {
     "preferred_width": 400
-  }
+  },
+  "protocol_handlers": [
+    {
+      "protocol": "web+skillboost",
+      "url": "/course-details.html?id=%s"
+    }
+  ],
+  "handle_links": "preferred"
 } 
